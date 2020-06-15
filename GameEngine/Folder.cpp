@@ -15,8 +15,11 @@ namespace Solar {
 			return;
 		}
 		if (this->Enabled) {
-			this->Position = this->Parent->Position;
-			this->Size = this->Parent->Size;
+			if (this->_body.getSize() != this->Parent->_body.getSize() || this->_body.getPosition() != this->Parent->_body.getPosition())
+			{
+				this->_body.setPosition(this->Parent->_body.getPosition());
+				this->_body.setSize(this->Parent->_body.getSize());
+			}
 			for (auto& x : this->children) {
 				x.second->Tick(dt);
 			}

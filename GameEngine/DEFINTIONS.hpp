@@ -7,6 +7,7 @@
 #include "StateMachine.hpp"
 #include "InputManager.hpp"
 #include "Instance.hpp"
+#include <typeinfo>
 
 #define nil NULL
 namespace Solar
@@ -16,7 +17,7 @@ namespace Solar
 	{
 		const char* Arial = "Resources/fonts/arial.ttf";
 	};
-	
+
 	local struct WindowProperties
 	{
 		int SCREEN_WIDTH = 800;

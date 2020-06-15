@@ -3,6 +3,7 @@
 #include "DataTypes.hpp"
 #include <functional>
 #include <iostream>
+#include <any>
 #include <string>
 #define nil NULL
 
@@ -34,10 +35,5 @@ namespace Solar {
 		Instance* Parent = nil;
 		std::map <int, Instance*> children;
 
-		Udim2 Size = Udim2();
-		Udim2 Position = Udim2();
-		int Transparency = 0;
-		Color BackgroundColor = Color();
-		float BorderSize = 10;
 	};
 };

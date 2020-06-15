@@ -13,10 +13,12 @@ namespace Solar {
 		{
 			Udim2 Position;
 			Udim2 Size;
-			int Transparency;
+			int BackgroundTransparency;
 			float Rotation;
-			Color Color;
+			Color BackgroundColor;
 			int BorderSize;
+			Color BorderColor;
+			int BorderTransparency;
 			sf::Vector2f previousParentBounds;
 			sf::Vector2f previousParentPosition;
 		};
@@ -37,6 +39,12 @@ namespace Solar {
 		void HandleEvents();
 		void HookEvent(std::string Event, std::function<void(Instance * frame)> function);
 		void FireEvent(std::string Event);
+
+		Udim2 Size = Udim2();
+		Udim2 Position = Udim2();
+		int Transparency = 0;
+		Color BackgroundColor = Color();
+		float BorderSize = 10;
 	};
 }
 

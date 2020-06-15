@@ -43,20 +43,23 @@
     <Filter Include="Scenes">
       <UniqueIdentifier>{553232d4-55cb-4880-9e8a-0c2c4bcbf60c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
     <Filter Include="Debug">
       <UniqueIdentifier>{2634a823-8481-45e4-a20a-9968938dc58f}</UniqueIdentifier>
     </Filter>
     <Filter Include="DataTypes\Color">
       <UniqueIdentifier>{b041e720-8341-4d5b-a7dc-20dc7e4510d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Managers\Serial">
+      <UniqueIdentifier>{5f7c0bd7-6c17-4459-a28c-c90c2c44794d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="#Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
-      <Filter>Main</Filter>
+      <Filter>#Main</Filter>
     </ClCompile>
     <ClCompile Include="StateMachine.cpp">
       <Filter>Managers\StateManager</Filter>
@@ -90,6 +93,9 @@
     </ClCompile>
     <ClCompile Include="Color.cpp">
       <Filter>DataTypes\Color</Filter>
+    </ClCompile>
+    <ClCompile Include="Serialization.cpp">
+      <Filter>Managers\Serial</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -130,13 +136,16 @@
       <Filter>Managers\StateManager</Filter>
     </ClInclude>
     <ClInclude Include="DEFINTIONS.hpp">
-      <Filter>Main</Filter>
+      <Filter>#Main</Filter>
     </ClInclude>
     <ClInclude Include="DEBUG.hpp">
       <Filter>Debug</Filter>
     </ClInclude>
     <ClInclude Include="Color.hpp">
       <Filter>DataTypes\Color</Filter>
+    </ClInclude>
+    <ClInclude Include="Serialization.hpp">
+      <Filter>Managers\Serial</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
