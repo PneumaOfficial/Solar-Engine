@@ -15,7 +15,7 @@ namespace Solar
 		Frame* testing = new Frame();
 		testing->Size = Udim2(0.5, 0, 0.5, 0);
 		testing->Transparency = 255;
-		testing->Name = "Testing Frame";
+		testing->Name = "TestingFrame";
 		main->AddChild(testing);
 
 		std::function<void(Instance * frame)> Click1 = [](Instance* x_frame)
