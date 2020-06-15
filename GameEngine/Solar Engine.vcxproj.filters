@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resource Files\Managers">
+      <UniqueIdentifier>{39caad52-416c-4bc3-9920-f885dfb8c194}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Managers\Input">
+      <UniqueIdentifier>{25c938bd-c594-4ea2-be4a-7151540c9e0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Managers\Game">
+      <UniqueIdentifier>{f94e9a5e-8f5b-4ae0-a89f-a7c066b3dd6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Managers\Asset">
+      <UniqueIdentifier>{7a44c3d9-d57b-4a46-a135-a7c1943e2ac9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Managers\State">
+      <UniqueIdentifier>{272a3c67-da9d-4383-9e10-9f104d85b97e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Managers\Definitions">
+      <UniqueIdentifier>{d9d8e6df-19d6-4459-bf31-c20cb086d95f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\States">
+      <UniqueIdentifier>{b747d150-4436-456d-bbe8-cc633321390e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Managers\Checks">
+      <UniqueIdentifier>{e254ebc4-bc32-415e-92b5-6d7b5ad82fc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Ui Library">
+      <UniqueIdentifier>{0e8ff63a-e41f-4237-b1df-4285670759cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Instance">
+      <UniqueIdentifier>{2397c35d-dfbc-49fa-af3a-1b205d17d7c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Instance\Folder">
+      <UniqueIdentifier>{c57f64f5-e526-427b-abf7-f7b69827b51d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Resource Files\Managers\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Resource Files\Managers\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Resource Files\Managers\Asset</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Resource Files\Managers\State</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashState.cpp">
+      <Filter>Resource Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Resource Files\Managers\State</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugUi.cpp">
+      <Filter>Resource Files\Ui Library</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Folder.cpp">
+      <Filter>Resource Files\Instance\Folder</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InputManager.hpp">
+      <Filter>Resource Files\Managers\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Resource Files\Managers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.hpp">
+      <Filter>Resource Files\Managers\Asset</Filter>
+    </ClInclude>
+    <ClInclude Include="State.hpp">
+      <Filter>Resource Files\Managers\State</Filter>
+    </ClInclude>
+    <ClInclude Include="StateMachine.hpp">
+      <Filter>Resource Files\Managers\State</Filter>
+    </ClInclude>
+    <ClInclude Include="DEFINTIONS.hpp">
+      <Filter>Resource Files\Managers\Definitions</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashState.hpp">
+      <Filter>Resource Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.hpp">
+      <Filter>Resource Files\Managers\State</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionDetector.hpp">
+      <Filter>Resource Files\Managers\Checks</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugUi.h">
+      <Filter>Resource Files\Ui Library</Filter>
+    </ClInclude>
+    <ClInclude Include="Instance.hpp">
+      <Filter>Resource Files\Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="Folder.hpp">
+      <Filter>Resource Files\Instance\Folder</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

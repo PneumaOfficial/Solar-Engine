@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{c126f8c4-6b25-4593-afbd-9ad8ad3bd290}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\InputManager">
+      <UniqueIdentifier>{a5bbabfe-761d-432f-8aa6-820a59aa9c2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\AssetManager">
+      <UniqueIdentifier>{8862daea-980e-4f0d-915a-82be993d2bcf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\StateManager">
+      <UniqueIdentifier>{99c9a841-0a99-45a5-ab19-7c522c0a482c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\GameLoop">
+      <UniqueIdentifier>{d09d558c-e786-4937-be76-067066b5eb36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance">
+      <UniqueIdentifier>{ddda89de-3471-47e9-87aa-aac61bf5bd1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types">
+      <UniqueIdentifier>{64b4c11f-a318-4adf-957f-4e5999c18c8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\EventHandler">
+      <UniqueIdentifier>{a50161c2-497a-435c-ae9b-0a397f9ca199}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataTypes">
+      <UniqueIdentifier>{69a9ceb5-1d90-4b0b-9194-19a44fe9748a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataTypes\Udim">
+      <UniqueIdentifier>{b9df5199-7763-4957-b9e9-df762226df16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\Frame">
+      <UniqueIdentifier>{660952fc-9fdd-45d1-8c6f-a38f245c7984}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\Folder">
+      <UniqueIdentifier>{062e7028-911f-42d9-a264-4e0e3387c38f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\TextButton">
+      <UniqueIdentifier>{7b782e4b-801f-4401-ae98-44e3b4917e55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{553232d4-55cb-4880-9e8a-0c2c4bcbf60c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Debug">
+      <UniqueIdentifier>{2634a823-8481-45e4-a20a-9968938dc58f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="DataTypes\Color">
+      <UniqueIdentifier>{b041e720-8341-4d5b-a7dc-20dc7e4510d4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="StateMachine.cpp">
+      <Filter>Managers\StateManager</Filter>
+    </ClCompile>
+    <ClCompile Include="AssetManager.cpp">
+      <Filter>Managers\AssetManager</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Managers\InputManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Managers\GameLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashState.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Udim2.cpp">
+      <Filter>DataTypes\Udim</Filter>
+    </ClCompile>
+    <ClCompile Include="Frame.cpp">
+      <Filter>Instance\Types\Frame</Filter>
+    </ClCompile>
+    <ClCompile Include="Folder.cpp">
+      <Filter>Instance\Types\Folder</Filter>
+    </ClCompile>
+    <ClCompile Include="DEBUG.cpp">
+      <Filter>Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>DataTypes\Color</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="StateMachine.hpp">
+      <Filter>Managers\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="AssetManager.hpp">
+      <Filter>Managers\AssetManager</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.hpp">
+      <Filter>Managers\InputManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Managers\GameLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.hpp">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashState.hpp">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Instance.hpp">
+      <Filter>Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="Udim2.hpp">
+      <Filter>DataTypes\Udim</Filter>
+    </ClInclude>
+    <ClInclude Include="DataTypes.hpp">
+      <Filter>DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Folder.hpp">
+      <Filter>Instance\Types\Folder</Filter>
+    </ClInclude>
+    <ClInclude Include="Frame.hpp">
+      <Filter>Instance\Types\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="State.hpp">
+      <Filter>Managers\StateManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DEFINTIONS.hpp">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="DEBUG.hpp">
+      <Filter>Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.hpp">
+      <Filter>DataTypes\Color</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

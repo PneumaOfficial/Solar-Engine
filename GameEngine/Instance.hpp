@@ -1,0 +1,43 @@
+#pragma once
+#include <SFML/Graphics.hpp>
+#include "DataTypes.hpp"
+#include <functional>
+#include <iostream>
+#include <string>
+#define nil NULL
+
+namespace Solar {
+	class Instance;
+	struct EventStruct
+	{
+		std::string EventName;
+		std::function<void(Instance * frame)> StoredFunction;
+	};
+	class Instance {
+	public:
+		sf::RectangleShape _body;
+		virtual void Render(float dt) = 0;
+		virtual void Tick(float dt) = 0;
+		virtual void AddChild(Instance* child) = 0;
+
+		//Events
+		virtual void HandleEvents() = 0;
+		virtual void FireEvent(std::string Event) = 0;
+		virtual void HookEvent(std::string Event, std::function<void(Instance* frame)> function) = 0;
+
+		std::map<int, EventStruct> EventQueue;
+
+		std::string Name;
+		std::string Type;
+		bool Enabled = true;
+
+		Instance* Parent = nil;
+		std::map <int, Instance*> children;
+
+		Udim2 Size = Udim2();
+		Udim2 Position = Udim2();
+		int Transparency = 0;
+		Color BackgroundColor = Color();
+		float BorderSize = 10;
+	};
+};
