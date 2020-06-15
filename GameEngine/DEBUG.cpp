@@ -31,7 +31,7 @@ namespace Solar
 			sf::Cursor cursor;
 			Enum.data.window.setMouseCursor(cursor);
 			cursor.loadFromSystem(sf::Cursor::Hand);
-			std::cout << "MouseButton1Up function here!" << std::endl;
+			std::cout << "MouseButton1Up funcction here!" << std::endl;
 			frame->BackgroundColor = Color(255, 0, 0);
 		};
 
