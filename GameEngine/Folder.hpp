@@ -4,10 +4,7 @@
 namespace Solar {
 
 	class Folder : public Instance {
-		struct EventBools
-		{
-
-		};
+		struct EventBools {};
 		EventBools EventChecks;
 	public:
 		Folder()

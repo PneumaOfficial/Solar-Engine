@@ -17,7 +17,7 @@ namespace Solar
 		testing->Transparency = 255;
 		testing->Name = "Testing Frame";
 		main->AddChild(testing);
-		std::cout << Serialize(testing) << std::endl;
+		std::cout << Serialize(main) << std::endl;
 
 		std::function<void(Instance * frame)> Click1 = [](Instance* x_frame)
 		{
