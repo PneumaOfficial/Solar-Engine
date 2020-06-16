@@ -1,6 +1,6 @@
 #include "DEBUG.hpp"
 #include "DEFINTIONS.hpp"
-#include <regex>
+#include "Serialization.hpp"
 namespace Solar
 {
 	extern struct Enums Enum;
@@ -15,8 +15,9 @@ namespace Solar
 		Frame* testing = new Frame();
 		testing->Size = Udim2(0.5, 0, 0.5, 0);
 		testing->Transparency = 255;
-		testing->Name = "TestingFrame";
+		testing->Name = "Testing Frame";
 		main->AddChild(testing);
+		std::cout << Serialize(testing) << std::endl;
 
 		std::function<void(Instance * frame)> Click1 = [](Instance* x_frame)
 		{

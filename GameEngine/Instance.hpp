@@ -16,11 +16,11 @@ namespace Solar {
 	};
 	class Instance {
 	public:
+
 		sf::RectangleShape _body;
 		virtual void Render(float dt) = 0;
 		virtual void Tick(float dt) = 0;
 		virtual void AddChild(Instance* child) = 0;
-
 		//Events
 		virtual void HandleEvents() = 0;
 		virtual void FireEvent(std::string Event) = 0;

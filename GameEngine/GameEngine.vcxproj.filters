@@ -49,9 +49,6 @@
     <Filter Include="DataTypes\Color">
       <UniqueIdentifier>{b041e720-8341-4d5b-a7dc-20dc7e4510d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Managers\Serial">
-      <UniqueIdentifier>{5f7c0bd7-6c17-4459-a28c-c90c2c44794d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="#Main">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
@@ -95,7 +92,7 @@
       <Filter>DataTypes\Color</Filter>
     </ClCompile>
     <ClCompile Include="Serialization.cpp">
-      <Filter>Managers\Serial</Filter>
+      <Filter>Instance</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,7 +142,7 @@
       <Filter>DataTypes\Color</Filter>
     </ClInclude>
     <ClInclude Include="Serialization.hpp">
-      <Filter>Managers\Serial</Filter>
+      <Filter>Instance</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

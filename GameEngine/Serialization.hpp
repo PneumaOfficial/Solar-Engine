@@ -1,18 +1,10 @@
 #pragma once
-//Types of supported serials
-#include "Folder.hpp"
+#include <iostream>
 #include "Frame.hpp"
-#define local static;
+#include "Folder.hpp"
 
 namespace Solar
 {
-	struct Serialization
-	{
-		//Overloads
-		std::string Serialize(Frame parent);
-		std::string Serialize(Folder parent);
-
-
-	};
+	std::string Serialize(Frame* dt);
+	std::string Serialize(Folder* dt);
 }
-
