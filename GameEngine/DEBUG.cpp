@@ -18,18 +18,13 @@ namespace Solar
 		testing->Name = "Testing Frame";
 		main->AddChild(testing);
 		std::cout << Serialize(main) << std::endl;
-
-		std::function<void(Instance * frame)> Click1 = [](Instance* x_frame)
+		std::function<void(Instance * frame)> Click1 = [testing](Instance* x_frame) mutable
 		{
-			Frame* frame = (Frame*)x_frame;
-			std::cout << "MouseButton1Up function here!" << std::endl;
-			frame->BackgroundColor = Color(255,0,0);
+			testing->BackgroundColor = Color(255, 102, 0);
 		};
-		std::function<void(Instance * frame)> Click2 = [](Instance* x_frame)
+		std::function<void(Instance * frame)> Click2 = [testing](Instance* x_frame) mutable
 		{
-			Frame* frame = (Frame*)x_frame;
-			std::cout << "MouseButton1Down function here!" << std::endl;
-			frame->BackgroundColor = Color(255, 102, 0);
+			testing->BackgroundColor = Color(255, 0, 0);
 		};
 		testing->HookEvent("MouseButton1Down", Click2);
 		testing->HookEvent("MouseButton1Up", Click1);

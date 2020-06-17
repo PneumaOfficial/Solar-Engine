@@ -24,9 +24,9 @@ namespace Solar {
 				sf::Vector2f ParentSize = this->Parent->_body.getSize();
 				sf::Vector2f ParentPosition = this->Parent->_body.getPosition();
 
-				if (this->BackgroundColor != this->PropertyChecks.BackgroundColor || this->Transparency != this->PropertyChecks.BackgroundTransparency)
+				if (!(this->BackgroundColor == this->PropertyChecks.BackgroundColor) || this->Transparency != this->PropertyChecks.BackgroundTransparency)
 				{
-					this->_body.setFillColor(sf::Color(this->BackgroundColor.getRed(), this->BackgroundColor.getGreen(), this->BackgroundColor.getBlue(), this->Transparency));
+					this->_body.setFillColor(sf::Color(this->BackgroundColor.getRed(), this->BackgroundColor.getGreen(), this->BackgroundColor.getBlue(), (1 - this->Transparency) * 255));
 					this->PropertyChecks.BackgroundTransparency = this->Transparency;
 					this->PropertyChecks.BackgroundColor = this->BackgroundColor;
 				}

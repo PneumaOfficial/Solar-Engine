@@ -13,7 +13,7 @@ namespace Solar {
 		{
 			Udim2 Position;
 			Udim2 Size;
-			int BackgroundTransparency;
+			float BackgroundTransparency;
 			float Rotation;
 			Color BackgroundColor;
 			int BorderSize;
@@ -42,7 +42,7 @@ namespace Solar {
 
 		Udim2 Size = Udim2();
 		Udim2 Position = Udim2();
-		int Transparency = 0;
+		float Transparency = 0;
 		Color BackgroundColor = Color();
 		float BorderSize = 10;
 	};

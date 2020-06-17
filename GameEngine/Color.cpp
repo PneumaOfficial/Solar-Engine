@@ -28,9 +28,9 @@ namespace Solar
 	bool operator== (const Color& c1, const Color& c2)
 	{
 		return	(
-				(c1.Red && c2.Red) &&
-				(c1.Blue && c2.Blue) &&
-				(c1.Green && c2.Green)
+				(c1.Red == c2.Red) &&
+				(c1.Blue == c2.Blue) &&
+				(c1.Green == c2.Green)
 				);
 	}
 

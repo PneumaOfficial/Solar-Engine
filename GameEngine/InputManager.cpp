@@ -35,8 +35,27 @@ namespace Solar {
 	}
 
 	//GetPosition
-	sf::Vector2i Solar::InputManager::GetMousePosition(sf::RenderWindow& window)
+	sf::Vector2i InputManager::GetMousePosition(sf::RenderWindow& window)
 	{
 		return sf::Mouse::getPosition(window);
+	}
+
+	void InputManager::HandleEvents()
+	{
+		//Events
+
+	}
+	void InputManager::HookEvent(std::string Event, std::function<void()> function)
+	{
+		EventStruct fun;
+		fun.StoredFunction = function;
+		fun.EventName = Event;
+		this->EventQueue.emplace(this->EventQueue.size() + 1, fun);
+	}
+	void InputManager::FireEvent(std::string Event)
+	{
+		for (auto& x : this->EventQueue)
+			if (x.second.EventName == Event)
+				x.second.StoredFunction();
 	}
 }
