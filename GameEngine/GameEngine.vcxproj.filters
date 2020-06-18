@@ -145,4 +145,7 @@
       <Filter>Instance</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Testing Scripts\Testing.lua" />
+  </ItemGroup>
 </Project>

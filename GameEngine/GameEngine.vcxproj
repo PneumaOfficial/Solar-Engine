@@ -181,6 +181,9 @@
     <ClInclude Include="StateMachine.hpp" />
     <ClInclude Include="Udim2.hpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Testing Scripts\Testing.lua" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
