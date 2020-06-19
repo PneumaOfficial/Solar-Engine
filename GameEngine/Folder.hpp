@@ -16,7 +16,7 @@ namespace Solar {
 		void Render(float dt);
 
 		void HandleEvents();
-		void HookEvent(std::string Event, std::function<void(Instance * frame)> function);
+		void HookEvent(std::string Event, std::function<void()> function);
 		void FireEvent(std::string Event);
 	};
 };

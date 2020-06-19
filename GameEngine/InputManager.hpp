@@ -7,15 +7,16 @@ namespace Solar {
 	private:
 		struct Events
 		{
-			bool Hovered;
-			bool Pressed;
+			bool Button1;
+			bool Button2;
+			bool Middle;
 		};
 		struct EventStruct
 		{
 			std::string EventName;
 			std::function<void()> StoredFunction;
 		};
-
+		Events EventChecks;
 	public:
 		bool IsSpriteClick(sf::Sprite object, sf::Mouse::Button button);
 		bool IsTextClicked(sf::Text object, sf::Mouse::Button button);

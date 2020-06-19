@@ -7,6 +7,7 @@
 #include "StateMachine.hpp"
 #include "InputManager.hpp"
 #include "Instance.hpp"
+#include "SFMLEventHandler.h"
 #include <typeinfo>
 
 #define nil NULL
@@ -56,7 +57,7 @@ namespace Solar
 		std::multimap<int, Instance*> Game;
 		DEBUG Debug;
 		sf::Mouse Mouse;
-
+		SFMLEventHandler SFMLEVENTS;
 		//Enums
 		x_Status Status;
 		x_Result Result;

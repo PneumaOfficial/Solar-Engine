@@ -37,7 +37,7 @@ namespace Solar {
 		bool Visible = true;
 
 		void HandleEvents();
-		void HookEvent(std::string Event, std::function<void(Instance * frame)> function);
+		void HookEvent(std::string Event, std::function<void()> function);
 		void FireEvent(std::string Event);
 
 		Udim2 Size = Udim2();

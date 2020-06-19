@@ -94,6 +94,9 @@
     <ClCompile Include="Serialization.cpp">
       <Filter>Instance</Filter>
     </ClCompile>
+    <ClCompile Include="SFMLEventHandler.cpp">
+      <Filter>Managers\InputManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StateMachine.hpp">
@@ -143,6 +146,9 @@
     </ClInclude>
     <ClInclude Include="Serialization.hpp">
       <Filter>Instance</Filter>
+    </ClInclude>
+    <ClInclude Include="SFMLEventHandler.h">
+      <Filter>Managers\InputManager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

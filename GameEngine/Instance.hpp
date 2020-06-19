@@ -12,7 +12,7 @@ namespace Solar {
 	struct EventStruct
 	{
 		std::string EventName;
-		std::function<void(Instance * frame)> StoredFunction;
+		std::function<void()> StoredFunction;
 	};
 	class Instance {
 	public:
@@ -24,7 +24,7 @@ namespace Solar {
 		//Events
 		virtual void HandleEvents() = 0;
 		virtual void FireEvent(std::string Event) = 0;
-		virtual void HookEvent(std::string Event, std::function<void(Instance* frame)> function) = 0;
+		virtual void HookEvent(std::string Event, std::function<void()> function) = 0;
 
 		std::map<int, EventStruct> EventQueue;
 

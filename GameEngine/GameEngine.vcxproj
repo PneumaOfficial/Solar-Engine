@@ -159,6 +159,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Serialization.cpp" />
+    <ClCompile Include="SFMLEventHandler.cpp" />
     <ClCompile Include="SplashState.cpp" />
     <ClCompile Include="StateMachine.cpp" />
     <ClCompile Include="Udim2.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Instance.hpp" />
     <ClInclude Include="MainMenu.hpp" />
     <ClInclude Include="Serialization.hpp" />
+    <ClInclude Include="SFMLEventHandler.h" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />

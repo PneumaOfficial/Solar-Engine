@@ -3,6 +3,7 @@
 #include "MainMenu.hpp"
 #include "DEBUG.hpp"
 #include "Frame.hpp"
+#include "SFMLEventHandler.h"
 namespace Solar {
 	extern struct Enums Enum;
 	Game::Game(int width, int height, std::string title)
@@ -43,22 +44,8 @@ namespace Solar {
 			accumulator += frameTime;
 			
 			while (accumulator >= dt) {
-				Enum.data.machine.GetActiveState()->HandleInput();
-
-				sf::Event Event;
-				while (Enum.data.window.pollEvent(Event))
-				{
-					//Process SFML Events
-					switch (Event.type)
-					{
-						case sf::Event::Resized:
-						{
-							/*sf::Vector2f newSize = (sf::Vector2f) Enum.data.window.getSize();
-							Enum.Game.find(1)->second->_body.setSize(sf::Vector2f(Enum.data.window.getSize().x, Enum.data.window.getSize().y));
-							Enum.Game.find(2)->second->_body.setSize(sf::Vector2f(Enum.data.window.getSize().x, Enum.data.window.getSize().y));*/
-						}
-					}
-				}
+				Enum.SFMLEVENTS.HandleEvents();
+				Enum.data.input.HandleEvents();
 				Enum.Debug.HandleEvents();
 				Enum.data.machine.GetActiveState()->Game.HandleEvents();
 				Enum.data.machine.GetActiveState()->Tick(dt);

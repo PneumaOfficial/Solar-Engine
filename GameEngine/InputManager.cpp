@@ -42,9 +42,22 @@ namespace Solar {
 
 	void InputManager::HandleEvents()
 	{
-		//Events
-
+		sf::Event SF_EVENT;
+		//Mouse Events
+		if (this->EventChecks.Button1 != Enum.Mouse.isButtonPressed(sf::Mouse::Button::Left))
+		{
+			this->EventChecks.Button1 = Enum.Mouse.isButtonPressed(sf::Mouse::Button::Left);
+			if (this->EventChecks.Button1)
+			{
+				FireEvent("MouseButton1Down");
+			}
+			else
+			{
+				FireEvent("MouseButton1Up");
+			}
+		}
 	}
+
 	void InputManager::HookEvent(std::string Event, std::function<void()> function)
 	{
 		EventStruct fun;

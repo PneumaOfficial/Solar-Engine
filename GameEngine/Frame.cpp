@@ -97,7 +97,7 @@ namespace Solar {
 		}
 	}
 
-	void Frame::HookEvent(std::string Event, std::function<void(Instance * frame)> function)
+	void Frame::HookEvent(std::string Event, std::function<void()> function)
 	{
 		EventStruct fun;
 		fun.StoredFunction = function;
@@ -108,6 +108,6 @@ namespace Solar {
 	{
 		for (auto& x : this->EventQueue)
 			if (x.second.EventName == Event)
-				x.second.StoredFunction(this);
+				x.second.StoredFunction();
 	}
 }
