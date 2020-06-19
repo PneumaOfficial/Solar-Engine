@@ -53,6 +53,12 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
+    <Filter Include="Managers\InputManager\Mouse">
+      <UniqueIdentifier>{1034820b-bf0b-47a6-955f-0afab775a65c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers\InputManager\SFML">
+      <UniqueIdentifier>{af094a79-d253-4ce4-92c7-de37dfd3428e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -95,7 +101,10 @@
       <Filter>Instance</Filter>
     </ClCompile>
     <ClCompile Include="SFMLEventHandler.cpp">
-      <Filter>Managers\InputManager</Filter>
+      <Filter>Managers\InputManager\SFML</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Managers\InputManager\Mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,8 +156,11 @@
     <ClInclude Include="Serialization.hpp">
       <Filter>Instance</Filter>
     </ClInclude>
-    <ClInclude Include="SFMLEventHandler.h">
-      <Filter>Managers\InputManager</Filter>
+    <ClInclude Include="SFMLEventHandler.hpp">
+      <Filter>Managers\InputManager\SFML</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.hpp">
+      <Filter>Managers\InputManager\Mouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

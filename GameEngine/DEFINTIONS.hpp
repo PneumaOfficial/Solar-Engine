@@ -6,8 +6,9 @@
 #include "AssetManager.hpp"
 #include "StateMachine.hpp"
 #include "InputManager.hpp"
+#include "Mouse.hpp"
 #include "Instance.hpp"
-#include "SFMLEventHandler.h"
+#include "SFMLEventHandler.hpp"
 #include <typeinfo>
 
 #define nil NULL
@@ -55,6 +56,7 @@ namespace Solar
 		Fonts Font;
 		Framework data;
 		std::multimap<int, Instance*> Game;
+		Mouse Mouse;
 		DEBUG Debug;
 		sf::Mouse Mouse;
 		SFMLEventHandler SFMLEVENTS;

@@ -158,6 +158,7 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="Serialization.cpp" />
     <ClCompile Include="SFMLEventHandler.cpp" />
     <ClCompile Include="SplashState.cpp" />
@@ -176,8 +177,9 @@
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="Instance.hpp" />
     <ClInclude Include="MainMenu.hpp" />
+    <ClInclude Include="Mouse.hpp" />
     <ClInclude Include="Serialization.hpp" />
-    <ClInclude Include="SFMLEventHandler.h" />
+    <ClInclude Include="SFMLEventHandler.hpp" />
     <ClInclude Include="SplashState.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="StateMachine.hpp" />
