@@ -13,9 +13,13 @@ namespace Solar
 			switch (event.type)
 			{
 			case sf::Event::Closed:
+			{
 				Enum.data.window.close();
-
+				break;
+			}
+			
 			case event.MouseWheelScrolled:
+			{
 				if (event.mouseWheelScroll.delta > 0)
 				{
 					Enum.Mouse.FireEvent("ScrollUp");
@@ -24,52 +28,69 @@ namespace Solar
 				{
 					Enum.Mouse.FireEvent("ScrollDown");
 				}
+				break;
+			}
 
 			case event.MouseButtonPressed:
+			{
 				switch (event.mouseButton.button)
 				{
 				case sf::Mouse::Button::Left:
-					Enum.Mouse._Buttons.Left = true;
+					Enum.Mouse._buttons.Left = true;
 					Enum.Mouse.FireEvent("LeftDown");
+					break;
 
 				case sf::Mouse::Button::Right:
-					Enum.Mouse._Buttons.Right = true;
+					Enum.Mouse._buttons.Right = true;
 					Enum.Mouse.FireEvent("RightDown");
+					break;
 
 				case sf::Mouse::Button::Middle:
-					Enum.Mouse._Buttons.Middle = true;
+					Enum.Mouse._buttons.Middle = true;
 					Enum.Mouse.FireEvent("MiddleDown");
+					break;
 
 				default:
 					break;
 				}
+				break;
+			}
 				
 			case event.MouseButtonReleased:
+			{
 				switch (event.mouseButton.button)
 				{
 				case sf::Mouse::Button::Left:
-					Enum.Mouse._Buttons.Left = false;
-					Enum.Mouse.FireEvent("LeftReleased");
+					Enum.Mouse._buttons.Left = false;
+					Enum.Mouse.FireEvent("LeftUp");
+					break;
 
 				case sf::Mouse::Button::Right:
-					Enum.Mouse._Buttons.Right = false;
-					Enum.Mouse.FireEvent("RightReleased");
+					Enum.Mouse._buttons.Right = false;
+					Enum.Mouse.FireEvent("RightUp");
+					break;
 
 				case sf::Mouse::Button::Middle:
-					Enum.Mouse._Buttons.Middle = false;
-					Enum.Mouse.FireEvent("MiddleReleased");
+					Enum.Mouse._buttons.Middle = false;
+					Enum.Mouse.FireEvent("MiddleUp");
+					break;
 
 				default:
 					break;
 				}
+				break;
+			}
 
 			case event.MouseMoved:
-				sf::Vector2i xPos = sf::Mouse::getPosition();
+			{
+				sf::Vector2i xPos = sf::Mouse::getPosition(Enum.data.window);
 				Vector2 Position;
 				Position.x = xPos.x;
 				Position.y = xPos.y;
-				Enum.Mouse._Position = Position;
-				Enum.data.input.FireEvent("MouseMoved");
+				Enum.Mouse._position = Position;
+				Enum.Mouse.FireEvent("MouseMoved");
+				break;
+			}
 
 			default:
 				break;

@@ -5,7 +5,7 @@
 #include <functional>
 namespace Solar
 {
-	struct Mouse
+	struct MOUSE
 	{
 		friend InputManager;
 		friend SFMLEventHandler;
@@ -21,15 +21,15 @@ namespace Solar
 			bool Right;
 			bool Middle;
 		};
-		Button_Bools _Buttons;
-		Vector2 _Position;
-		bool _InWindow;
+		Button_Bools _buttons;
+		Vector2 _position;
+		bool _inWindow;
 		std::map<int, EventStruct> EventQueue;
 
 	public:
-		const Vector2* Position = &_Position;
-		const Button_Bools* Buttons = &_Buttons;
-		const bool* InsideWindow = &_InWindow;
+		const Vector2& Position = _position;
+		const Button_Bools& Buttons = _buttons;
+		const bool& InsideWindow = _inWindow;
 
 		void HookEvent(std::string Event, std::function<void()> function);
 		void FireEvent(std::string Event);

@@ -3,7 +3,7 @@
 #include "MainMenu.hpp"
 #include "DEBUG.hpp"
 #include "Frame.hpp"
-#include "SFMLEventHandler.h"
+#include "SFMLEventHandler.hpp"
 namespace Solar {
 	extern struct Enums Enum;
 	Game::Game(int width, int height, std::string title)

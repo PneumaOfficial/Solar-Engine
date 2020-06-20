@@ -78,9 +78,10 @@ namespace Solar {
 				this->FireEvent("MouseLeave");
 			}
 		}
-		if (this->EventChecks.Hovered && this->EventChecks.Pressed != Enum.Mouse.isButtonPressed(sf::Mouse::Button::Left))
+
+		if (this->EventChecks.Hovered && this->EventChecks.Pressed != Enum.Mouse.Buttons.Left)
 		{
-			this->EventChecks.Pressed = Enum.Mouse.isButtonPressed(sf::Mouse::Button::Left);
+			this->EventChecks.Pressed = Enum.Mouse.Buttons.Left;
 			if (this->EventChecks.Pressed)
 			{
 				FireEvent("MouseButton1Down");

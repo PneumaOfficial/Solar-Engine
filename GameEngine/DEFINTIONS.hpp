@@ -56,9 +56,8 @@ namespace Solar
 		Fonts Font;
 		Framework data;
 		std::multimap<int, Instance*> Game;
-		Mouse Mouse;
+		MOUSE Mouse;
 		DEBUG Debug;
-		sf::Mouse Mouse;
 		SFMLEventHandler SFMLEVENTS;
 		//Enums
 		x_Status Status;

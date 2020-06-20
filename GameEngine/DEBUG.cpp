@@ -17,28 +17,30 @@ namespace Solar
 		testing->Transparency = 255;
 		testing->Name = "Testing Frame";
 		main->AddChild(testing);
-		std::cout << Serialize(main) << std::endl;
-		std::function<void()> Click1 = [testing]() mutable
+		testing->AddChild(new Frame());
+		bool shouldDrag = false;
+		Vector2 offset;
+		//std::cout << Serialize(main) << std::endl;
+		std::function<void()> MouseDown = [testing, &shouldDrag, &offset]() mutable
 		{
-			testing->BackgroundColor = Color(255, 102, 0);
+			offset.x = Enum.Mouse.Position.x - testing->_body.getPosition().x;
+			offset.y = Enum.Mouse.Position.y - testing->_body.getPosition().y;
+			shouldDrag = true;
 		};
-		std::function<void()> Click2 = [testing]() mutable
+		std::function<void()> MouseUp = [testing, &shouldDrag, &offset]() mutable
 		{
-			testing->BackgroundColor = Color(255, 0, 0);
+			shouldDrag = false;
 		};
-
-		std::function<void()> scroll1 = [testing]() mutable
+		std::function<void()> MouseMove = [testing, &shouldDrag, &offset]() mutable
 		{
-			testing->Size = Udim2(testing->Size.x.scale, testing->Size.x.offset, testing->Size.y.scale, testing->Size.y.offset + 15);
+			if (shouldDrag == true)
+			{
+				testing->Position = Udim2(0, Enum.Mouse.Position.x - offset.x, 0, Enum.Mouse.Position.y - offset.y);
+			}
 		};
-		std::function<void()> scroll2 = [testing]() mutable
-		{
-			testing->Size = Udim2(testing->Size.x.scale, testing->Size.x.offset, testing->Size.y.scale, testing->Size.y.offset - 15);
-		};
-		testing->HookEvent("MouseButton1Down", Click2);
-		testing->HookEvent("MouseButton1Up", Click1);
-		Enum.data.input.HookEvent("ScrollUp", scroll2);
-		Enum.data.input.HookEvent("ScrollDown", scroll1);
+		testing->HookEvent("MouseButton1Down", MouseDown);
+		Enum.Mouse.HookEvent("LeftUp", MouseUp);
+		Enum.Mouse.HookEvent("MouseMoved", MouseMove);
 	}
 	void DEBUG::HandleEvents()
 	{
