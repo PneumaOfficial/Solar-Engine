@@ -19,11 +19,14 @@ namespace Solar {
 			int BorderSize;
 			Color BorderColor;
 			int BorderTransparency;
+			bool ClipsDescendants;
+
 			sf::Vector2f previousParentBounds;
 			sf::Vector2f previousParentPosition;
 		};
 		Events EventChecks;
 		Properties PropertyChecks;
+		sf::View CurrentView;
 	public:
 		Frame()
 		{
@@ -45,6 +48,7 @@ namespace Solar {
 		float Transparency = 0;
 		Color BackgroundColor = Color();
 		float BorderSize = 10;
+		bool ClipsDescendants;
 	};
 }
 

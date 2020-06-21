@@ -24,6 +24,7 @@ namespace Solar {
 
 		Enum.data.window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
 		Enum.data.machine.AddState(StateRef(new SplashState()));
+
 		this->Run();
 	}
 
@@ -58,8 +59,11 @@ namespace Solar {
 
 			//Rendering
 			Enum.data.machine.GetActiveState()->Render(interpolation);
+			Enum.data.window.setView(Enum.data.window.getDefaultView());
 			Enum.data.machine.GetActiveState()->Game.Render(interpolation);
+			Enum.data.window.setView(Enum.data.window.getDefaultView());
 			Enum.Debug.Render(interpolation);
+			Enum.data.window.setView(Enum.data.window.getDefaultView());
 			Enum.data.window.display();
 		}
 	}

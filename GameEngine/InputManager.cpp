@@ -28,9 +28,29 @@ namespace Solar {
 	bool InputManager::IsRectHovered(sf::RectangleShape object)
 	{
 		sf::IntRect tempRect(object.getPosition().x, object.getPosition().y, object.getGlobalBounds().width, object.getGlobalBounds().height);
+		
 		if (tempRect.contains(sf::Mouse::getPosition(Enum.data.window))) {
 			return true;
 		}
+		return false;
+	}
+
+	bool InputManager::Contains(sf::FloatRect rect, sf::Vector2i point)
+	{
+		rect.left = rect.left * Enum.Window.SCREEN_WIDTH;
+		rect.width = rect.width * Enum.Window.SCREEN_WIDTH;
+		rect.top = rect.top * Enum.Window.SCREEN_HEIGHT;
+		rect.height = rect.height * Enum.Window.SCREEN_HEIGHT;
+		/*std::cout << "Point----------------------------" << std::endl;
+		std::cout << "X: " << point.x << std::endl;
+		std::cout << "Y: " << point.y << std::endl;
+		std::cout << "Rect----------------------------" << std::endl;
+		std::cout << "X: " << rect.left << std::endl;
+		std::cout << "Y: " << rect.top << std::endl;
+		std::cout << "Width: " << rect.width << std::endl;
+		std::cout << "Height: " << rect.height << std::endl;*/
+		if (rect.left < point.x < rect.width + rect.left && rect.top < point.y < rect.height + rect.left)
+			return true;
 		return false;
 	}
 

@@ -15,6 +15,7 @@ namespace Solar {
 		bool IsSpriteClick(sf::Sprite object, sf::Mouse::Button button);
 		bool IsTextClicked(sf::Text object, sf::Mouse::Button button);
 		bool IsRectHovered(sf::RectangleShape);
+		bool Contains(sf::FloatRect rect, sf::Vector2i point);
 		sf::Vector2i GetMousePosition(sf::RenderWindow& window);
 
 		std::map<int, EventStruct> EventQueue;

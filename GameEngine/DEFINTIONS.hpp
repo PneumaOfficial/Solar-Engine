@@ -32,6 +32,7 @@ namespace Solar
 		sf::RenderWindow window;
 		AssetManager assets;
 		InputManager input;
+		sf::View MainView;
 	};
 
 	local enum x_Status

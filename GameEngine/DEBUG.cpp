@@ -11,34 +11,42 @@ namespace Solar
 		main = new Folder();
 		main->Name = "GUI";
 		Enum.Game.find(2)->second->AddChild(main);
-
-		Frame* testing = new Frame();
-		testing->Size = Udim2(0.5, 0, 0.5, 0);
-		testing->Transparency = 255;
-		testing->Name = "Testing Frame";
-		main->AddChild(testing);
-		testing->AddChild(new Frame());
+		Frame* Wow = new Frame();
+		Wow->ClipsDescendants = true;
+		Wow->Size = Udim2(0.5,0,0,50);
+		main->AddChild(Wow);
+		Frame* Tab = new Frame();
+		Tab->Size = Udim2(0.5, 0, 0, 30);
+		Tab->Name = "Tab Frame";
+		Tab->BackgroundColor = Color(0, 51, 153);
+		Wow->AddChild(Tab);
+		Frame* Body = new Frame();
+		Tab->AddChild(Body);
+		Body->BackgroundColor = Color(77, 136, 255);
+		Body->Size = Udim2(1, 0, 0, 300);
+		Body->Position = Udim2(0,15,1,-15);
 		bool shouldDrag = false;
 		Vector2 offset;
-		//std::cout << Serialize(main) << std::endl;
-		std::function<void()> MouseDown = [testing, &shouldDrag, &offset]() mutable
+		std::function<void()> MouseDown = [Tab, &shouldDrag, &offset]() mutable
 		{
-			offset.x = Enum.Mouse.Position.x - testing->_body.getPosition().x;
-			offset.y = Enum.Mouse.Position.y - testing->_body.getPosition().y;
+			Tab->ClipsDescendants = true;
+			offset.x = Enum.Mouse.Position.x - Tab->_body.getPosition().x;
+			offset.y = Enum.Mouse.Position.y - Tab->_body.getPosition().y;
 			shouldDrag = true;
 		};
-		std::function<void()> MouseUp = [testing, &shouldDrag, &offset]() mutable
+		std::function<void()> MouseUp = [Tab, &shouldDrag, &offset]() mutable
 		{
+			Tab->ClipsDescendants = false;
 			shouldDrag = false;
 		};
-		std::function<void()> MouseMove = [testing, &shouldDrag, &offset]() mutable
+		std::function<void()> MouseMove = [Tab, &shouldDrag, &offset]() mutable
 		{
 			if (shouldDrag == true)
 			{
-				testing->Position = Udim2(0, Enum.Mouse.Position.x - offset.x, 0, Enum.Mouse.Position.y - offset.y);
+				Tab->Position = Udim2(0, Enum.Mouse.Position.x - offset.x, 0, Enum.Mouse.Position.y - offset.y);
 			}
 		};
-		testing->HookEvent("MouseButton1Down", MouseDown);
+		Tab->HookEvent("MouseButton1Down", MouseDown);
 		Enum.Mouse.HookEvent("LeftUp", MouseUp);
 		Enum.Mouse.HookEvent("MouseMoved", MouseMove);
 	}
@@ -48,13 +56,10 @@ namespace Solar
 	}
 	void DEBUG::Tick(float dt)
 	{
-
 		Enum.Game.find(2)->second->Tick(dt);
 	}
 	void DEBUG::Render(float dt)
 	{
-
-
 		Enum.Game.find(2)->second->Render(dt);
 	}
 }

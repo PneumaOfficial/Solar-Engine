@@ -52,8 +52,44 @@ namespace Solar {
 	}
 	void Frame::Render(float dt)
 	{
-
 		if (this->Enabled) {
+			if (this->ClipsDescendants)
+			{
+				sf::View region = Enum.data.window.getView();
+				
+				sf::Vector2f Siz = sf::Vector2f(
+					this->_body.getGlobalBounds().width / Enum.Window.SCREEN_WIDTH,
+					this->_body.getGlobalBounds().height / Enum.Window.SCREEN_HEIGHT
+				);
+
+				sf::Vector2f Pos = sf::Vector2f(
+					this->_body.getPosition().x / Enum.Window.SCREEN_WIDTH,
+					this->_body.getPosition().y / Enum.Window.SCREEN_HEIGHT
+				);
+				
+				if (region.getViewport().left + region.getViewport().width < Siz.x + Pos.x)
+				{
+					float max = (Siz.x + Pos.x) - (region.getViewport().left + region.getViewport().width);
+					float tempHeight = Siz.x - max;
+					Siz.x = tempHeight;
+				}
+				if (region.getViewport().top + region.getViewport().height < Siz.y + Pos.y)
+				{
+					float max = (Siz.y + Pos.y) - (region.getViewport().top + region.getViewport().height);
+					float tempHeight = Siz.y - max;
+					Siz.y = tempHeight;
+				}
+				region.setViewport(sf::FloatRect(Pos.x, Pos.y, Siz.x, Siz.y));
+				region.setSize(sf::Vector2f(
+					Siz.x * Enum.Window.SCREEN_WIDTH, 
+					Siz.y * Enum.Window.SCREEN_HEIGHT
+				));
+				region.setCenter(sf::Vector2f(
+					(Pos.x * Enum.Window.SCREEN_WIDTH) + ((Siz.x * Enum.Window.SCREEN_WIDTH) / 2),
+					(Pos.y * Enum.Window.SCREEN_HEIGHT) + ((Siz.y * Enum.Window.SCREEN_HEIGHT) / 2)));
+				Enum.data.window.setView(region);
+			}
+			this->CurrentView = Enum.data.window.getView();
 			if (this->Visible) {
 				Enum.data.window.draw(this->_body);
 			}
@@ -66,7 +102,10 @@ namespace Solar {
 	//Event Variables
 	void Frame::HandleEvents()
 	{
-		if (Enum.data.input.IsRectHovered(this->_body) != this->EventChecks.Hovered)
+		sf::View view = this->CurrentView;
+		sf::FloatRect port = view.getViewport();
+
+		if (Enum.data.input.Contains(port, sf::Mouse::getPosition()) != this->EventChecks.Hovered)
 		{
 			this->EventChecks.Hovered = Enum.data.input.IsRectHovered(this->_body);
 			if (this->EventChecks.Hovered)
