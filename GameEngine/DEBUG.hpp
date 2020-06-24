@@ -10,7 +10,7 @@ namespace Solar
 		void Init();
 		void HandleEvents();
 		void Tick(float dt);
-		void Render(float dt);
+		void Render(float dt, sf::RenderTexture* target);
 		void Pause();
 		void Play();
 		bool getStatus();

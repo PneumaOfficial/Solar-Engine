@@ -6,6 +6,11 @@ namespace Solar {
 	extern struct Enums Enum;
 	void Folder::AddChild(Instance* child)
 	{
+		if (child->Type == "Folder")
+		{
+			child->_body.setSize(this->_body.getSize());
+			child->_body.setPosition(this->_body.getPosition());
+		}
 		this->children.emplace(this->children.size() + 1, child);
 		child->Parent = this;
 	}
@@ -25,10 +30,10 @@ namespace Solar {
 			}
 		}
 	}
-	void Folder::Render(float dt) {
+	void Folder::Render(float dt, sf::RenderTexture* target) {
 		if (this->Enabled) {
 			for (auto& x : this->children) {
-				x.second->Render(dt);
+				x.second->Render(dt, target);
 			}
 		}
 	}

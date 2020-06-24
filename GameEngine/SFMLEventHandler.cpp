@@ -18,6 +18,12 @@ namespace Solar
 				break;
 			}
 			
+			case sf::Event::Resized:
+			{
+				Enum.data.DefaultView.setSize((sf::Vector2f)Enum.data.window.getSize());
+				Enum.data.window.setView(Enum.data.DefaultView);
+			}
+
 			case event.MouseWheelScrolled:
 			{
 				if (event.mouseWheelScroll.delta > 0)
@@ -83,7 +89,7 @@ namespace Solar
 
 			case event.MouseMoved:
 			{
-				sf::Vector2i xPos = sf::Mouse::getPosition(Enum.data.window);
+				sf::Vector2f xPos = Enum.data.window.mapPixelToCoords(sf::Mouse::getPosition(Enum.data.window), Enum.data.DefaultView);
 				Vector2 Position;
 				Position.x = xPos.x;
 				Position.y = xPos.y;

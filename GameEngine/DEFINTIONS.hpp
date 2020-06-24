@@ -10,32 +10,33 @@
 #include "Instance.hpp"
 #include "SFMLEventHandler.hpp"
 #include <typeinfo>
+#include <memory>
 
 #define nil NULL
 namespace Solar
 {
 	//Structs
-	local struct Fonts
+	struct Fonts
 	{
 		const char* Arial = "Resources/fonts/arial.ttf";
 	};
 
-	local struct WindowProperties
+	struct WindowProperties
 	{
-		int SCREEN_WIDTH = 800;
-		int SCREEN_HEIGHT = 600;
+		int SCREEN_WIDTH = sf::VideoMode::getDesktopMode().width;
+		int SCREEN_HEIGHT = sf::VideoMode::getDesktopMode().height;
 	};
 
-	local struct Framework 
+	struct Framework 
 	{
 		StateMachine machine;
 		sf::RenderWindow window;
 		AssetManager assets;
 		InputManager input;
-		sf::View MainView;
+		sf::View DefaultView;
 	};
 
-	local enum x_Status
+	enum x_Status
 	{
 		Visible,
 		Invisible,
@@ -44,7 +45,7 @@ namespace Solar
 		Enabled,
 		Disabled,
 	};
-	local enum x_Result
+	enum x_Result
 	{
 		Success,
 		Failure

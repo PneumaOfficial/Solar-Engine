@@ -35,21 +35,16 @@ namespace Solar {
 		return false;
 	}
 
-	bool InputManager::Contains(sf::FloatRect rect, sf::Vector2i point)
+	bool InputManager::Contains(sf::View view, sf::Vector2i point)
 	{
+		sf::FloatRect rect = view.getViewport();
 		rect.left = rect.left * Enum.Window.SCREEN_WIDTH;
 		rect.width = rect.width * Enum.Window.SCREEN_WIDTH;
 		rect.top = rect.top * Enum.Window.SCREEN_HEIGHT;
 		rect.height = rect.height * Enum.Window.SCREEN_HEIGHT;
-		/*std::cout << "Point----------------------------" << std::endl;
-		std::cout << "X: " << point.x << std::endl;
-		std::cout << "Y: " << point.y << std::endl;
-		std::cout << "Rect----------------------------" << std::endl;
-		std::cout << "X: " << rect.left << std::endl;
-		std::cout << "Y: " << rect.top << std::endl;
-		std::cout << "Width: " << rect.width << std::endl;
-		std::cout << "Height: " << rect.height << std::endl;*/
-		if (rect.left < point.x < rect.width + rect.left && rect.top < point.y < rect.height + rect.left)
+		sf::Vector2f newPoint =  Enum.data.window.mapPixelToCoords(point, view);
+		std::cout << "X: " << newPoint.x << " Y: " << newPoint.y << std::endl;
+		if (rect.contains(newPoint.x, newPoint.y))
 			return true;
 		return false;
 	}

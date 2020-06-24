@@ -51,8 +51,8 @@ namespace Solar {
 	{
 
 	}
-	void MainMenuState::Render(float dt)
+	void MainMenuState::Render(float dt, sf::RenderTexture* target)
 	{
-		Enum.data.window.draw(this->_play);
+		target->draw(this->_play);
 	}
 }

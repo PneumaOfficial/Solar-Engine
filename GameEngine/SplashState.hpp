@@ -11,7 +11,7 @@ namespace Solar {
 		void Init();
 		void HandleInput();
 		void Tick(float dt);
-		void Render(float dt);
+		void Render(float dt, sf::RenderTexture* target);
 		void Resume() {};
 		void Pause() {};
 	private:

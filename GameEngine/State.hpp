@@ -10,7 +10,7 @@ namespace Solar {
 		};
 		virtual void Init() = 0;
 		virtual void HandleInput() = 0;
-		virtual void Render(float dt) = 0;
+		virtual void Render(float dt, sf::RenderTexture* target) = 0;
 		virtual void Tick(float dt) = 0;
 		virtual void Resume() = 0;
 		virtual void Pause() = 0;

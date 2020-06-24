@@ -18,7 +18,7 @@ namespace Solar {
 	public:
 
 		sf::RectangleShape _body;
-		virtual void Render(float dt) = 0;
+		virtual void Render(float dt, sf::RenderTexture* target) = 0;
 		virtual void Tick(float dt) = 0;
 		virtual void AddChild(Instance* child) = 0;
 		//Events

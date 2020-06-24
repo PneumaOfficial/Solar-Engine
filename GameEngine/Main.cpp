@@ -1,6 +1,5 @@
 #include <iostream>
 #include "Game.hpp"
-#include "DEFINTIONS.hpp"
 namespace Solar 
 {
     Enums Enum;
@@ -8,6 +7,6 @@ namespace Solar
 
 int main(){
     
-    Solar::Game(Solar::Enum.Window.SCREEN_WIDTH, Solar::Enum.Window.SCREEN_HEIGHT, "Solar Engine Testing");
+    Solar::Game(0, 0, "Solar Engine Testing");
     return EXIT_SUCCESS;
 }

@@ -21,14 +21,24 @@ namespace Solar {
 		{
 			if (this->Parent != nil)
 			{
+
 				sf::Vector2f ParentSize = this->Parent->_body.getSize();
 				sf::Vector2f ParentPosition = this->Parent->_body.getPosition();
 
-				if (!(this->BackgroundColor == this->PropertyChecks.BackgroundColor) || this->Transparency != this->PropertyChecks.BackgroundTransparency)
+				if (!(this->BackgroundColor == this->PropertyChecks.BackgroundColor) || this->BackgroundTransparency != this->PropertyChecks.BackgroundTransparency)
 				{
-					this->_body.setFillColor(sf::Color(this->BackgroundColor.getRed(), this->BackgroundColor.getGreen(), this->BackgroundColor.getBlue(), (1 - this->Transparency) * 255));
-					this->PropertyChecks.BackgroundTransparency = this->Transparency;
+					this->_body.setFillColor(sf::Color(this->BackgroundColor.getRed(), this->BackgroundColor.getGreen(), this->BackgroundColor.getBlue(), (1 - this->BackgroundTransparency) * 255));
+					this->PropertyChecks.BackgroundTransparency = this->BackgroundTransparency;
 					this->PropertyChecks.BackgroundColor = this->BackgroundColor;
+				}
+
+				if (!(this->BorderColor == this->PropertyChecks.BorderColor) || this->BorderTransparency != this->PropertyChecks.BorderTransparency || this->BorderSize != this->PropertyChecks.BorderSize)
+				{
+					this->_body.setOutlineColor(sf::Color(this->BorderColor.getRed(), this->BorderColor.getGreen(), this->BorderColor.getBlue(), (1 - this->BorderTransparency) * 255));
+					this->_body.setOutlineThickness(this->BorderSize);
+					this->PropertyChecks.BorderTransparency = this->BorderTransparency;
+					this->PropertyChecks.BorderColor = this->BorderColor;
+					this->PropertyChecks.BorderSize = this->BorderSize;
 				}
 
 
@@ -37,6 +47,23 @@ namespace Solar {
 					this->_body.setPosition(ParentPosition.x + (ParentSize.x * this->Position.x.scale) + this->Position.x.offset, ParentPosition.y + (ParentSize.y * this->Position.y.scale) + this->Position.y.offset);
 					this->Position = this->Position;
 					this->PropertyChecks.previousParentPosition = ParentPosition;
+
+					if (this->Trapped)
+					{
+						//Top Left
+						if (this->_body.getPosition().x < this->Parent->_body.getPosition().x)
+							this->_body.setPosition(sf::Vector2f(this->Parent->_body.getPosition().x, this->_body.getPosition().y));
+						
+						if (this->_body.getPosition().y < this->Parent->_body.getPosition().y)
+							this->_body.setPosition(sf::Vector2f(this->_body.getPosition().x, this->Parent->_body.getPosition().y));
+
+						//Bottom Right
+						if (this->_body.getPosition().x + this->_body.getSize().x > this->Parent->_body.getPosition().x + this->Parent->_body.getSize().x)
+							this->_body.setPosition(sf::Vector2f(this->Parent->_body.getPosition().x + this->Parent->_body.getSize().x - this->_body.getSize().x, this->_body.getPosition().y));
+						
+						if (this->_body.getPosition().y + this->_body.getSize().y > this->Parent->_body.getPosition().y + this->Parent->_body.getSize().y)
+							this->_body.setPosition(sf::Vector2f(this->_body.getPosition().x, this->Parent->_body.getPosition().y + this->Parent->_body.getSize().y - this->_body.getSize().y));
+					}
 				}
 				if (this->Size != this->PropertyChecks.Size || ParentSize != this->PropertyChecks.previousParentBounds)
 				{
@@ -50,7 +77,7 @@ namespace Solar {
 			}
 		}
 	}
-	void Frame::Render(float dt)
+	void Frame::Render(float dt, sf::RenderTexture* target)
 	{
 		if (this->Enabled) {
 			if (this->ClipsDescendants)
@@ -66,17 +93,31 @@ namespace Solar {
 					this->_body.getPosition().x / Enum.Window.SCREEN_WIDTH,
 					this->_body.getPosition().y / Enum.Window.SCREEN_HEIGHT
 				);
-				
+				/*if (region.getViewport().top < Pos.y)
+				{
+					float max = (region.getViewport().top + region.getViewport().height) - (Siz.y);
+					float tempHeight = max - Siz.y;
+					std::cout << "New Pos: " << max << std::endl;
+					std::cout << "New Size: " << tempHeight << std::endl;
+					if (tempHeight < 0)
+						tempHeight = 0.f;
+					Pos.y = Pos.y + (Siz.y - tempHeight);
+					Siz.y = tempHeight;
+				}*/
 				if (region.getViewport().left + region.getViewport().width < Siz.x + Pos.x)
 				{
 					float max = (Siz.x + Pos.x) - (region.getViewport().left + region.getViewport().width);
 					float tempHeight = Siz.x - max;
+					if (tempHeight < 0)
+						tempHeight = 0.f;
 					Siz.x = tempHeight;
 				}
 				if (region.getViewport().top + region.getViewport().height < Siz.y + Pos.y)
 				{
 					float max = (Siz.y + Pos.y) - (region.getViewport().top + region.getViewport().height);
 					float tempHeight = Siz.y - max;
+					if (tempHeight < 0)
+						tempHeight = 0.f;
 					Siz.y = tempHeight;
 				}
 				region.setViewport(sf::FloatRect(Pos.x, Pos.y, Siz.x, Siz.y));
@@ -91,10 +132,26 @@ namespace Solar {
 			}
 			this->CurrentView = Enum.data.window.getView();
 			if (this->Visible) {
-				Enum.data.window.draw(this->_body);
+				if (this->BlurBackground)
+				{
+					sf::Shader shader;
+					shader.loadFromFile("Resources/shaders/Blur/Blur.frag", sf::Shader::Fragment);
+					sf::Sprite sprite(target->getTexture(), sf::IntRect(this->_body.getPosition().x, this->_body.getPosition().y, this->_body.getSize().x, this->_body.getSize().y));
+					sprite.setPosition(this->_body.getPosition());
+					shader.setUniform("source", sf::Shader::CurrentTexture);
+					shader.setUniform("xOffset", this->BlurOffsets.x);
+					shader.setUniform("yOffset", this->BlurOffsets.y);
+					target->draw(sprite, &shader);
+				}
+				target->draw(this->_body);
 			}
 			for (auto& x : this->children) {
-				x.second->Render(dt);
+				if (x.second->Type == "Folder")
+				{
+					x.second->_body.setPosition(this->_body.getPosition());
+					x.second->_body.setSize(this->_body.getSize());
+				}
+				x.second->Render(dt, target);
 			}
 		}
 	}
@@ -102,10 +159,7 @@ namespace Solar {
 	//Event Variables
 	void Frame::HandleEvents()
 	{
-		sf::View view = this->CurrentView;
-		sf::FloatRect port = view.getViewport();
-
-		if (Enum.data.input.Contains(port, sf::Mouse::getPosition()) != this->EventChecks.Hovered)
+		if (/*Enum.data.input.Contains(this->CurrentView, sf::Mouse::getPosition()) &&*/ Enum.data.input.IsRectHovered(this->_body) != this->EventChecks.Hovered)
 		{
 			this->EventChecks.Hovered = Enum.data.input.IsRectHovered(this->_body);
 			if (this->EventChecks.Hovered)

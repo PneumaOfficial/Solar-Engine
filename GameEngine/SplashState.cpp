@@ -32,7 +32,7 @@ namespace Solar {
 		Enum.data.machine.AddState(StateRef(new MainMenuState()), true);
 	}
 
-	void SplashState::Render(float dt) {
+	void SplashState::Render(float dt, sf::RenderTexture* target) {
 		
 	}
 }

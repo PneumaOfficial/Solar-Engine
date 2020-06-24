@@ -5,45 +5,71 @@ namespace Solar
 {
 	extern struct Enums Enum;
 	Folder* main;
+	sf::Image img;
+	sf::Texture texture;
+	sf::Sprite sprite;
 	void DEBUG::Init()
 	{
+		img.loadFromFile("Resources/testing.png");
+		texture.loadFromImage(img);
+		sprite.setTexture(texture, true);
+		//Testing
+		sf::Shader core_shader;
+		core_shader.loadFromFile("Resources/shaders/Blur/Blur.frag", sf::Shader::Fragment);
+
+
 		//Main GUI
 		main = new Folder();
 		main->Name = "GUI";
 		Enum.Game.find(2)->second->AddChild(main);
 		Frame* Wow = new Frame();
-		Wow->ClipsDescendants = true;
-		Wow->Size = Udim2(0.5,0,0,50);
+		Wow->Visible = false;
+		Wow->Size = Udim2(0.5,0,1,0);
+		Wow->Position = Udim2(0,0,0,0);
+		Wow->BackgroundColor = Color(77, 121, 255);
 		main->AddChild(Wow);
 		Frame* Tab = new Frame();
-		Tab->Size = Udim2(0.5, 0, 0, 30);
+		Tab->Size = Udim2(1, 0, 0, 25);
 		Tab->Name = "Tab Frame";
-		Tab->BackgroundColor = Color(0, 51, 153);
-		Wow->AddChild(Tab);
+		Tab->BackgroundColor = Color(38, 38, 38);
+		Tab->BackgroundTransparency = 0.2;
 		Frame* Body = new Frame();
-		Tab->AddChild(Body);
-		Body->BackgroundColor = Color(77, 136, 255);
-		Body->Size = Udim2(1, 0, 0, 300);
-		Body->Position = Udim2(0,15,1,-15);
+		Body->BackgroundTransparency = 0.3;
+		Body->Position = Udim2(0,0,0,25);
+		Body->BackgroundColor = Color(0,0,0);
+		Body->Size = Udim2(1, 0, 0, 350);
+		Frame* Border = new Frame();
+		Border->BlurBackground = true;
+		Border->Size = Udim2(1,0,0,375);
+		Border->Position = Udim2(0, 0, 0, 0);
+		Border->BackgroundTransparency = 1;
+		Border->BorderSize = 1;
+		Border->BorderColor = Color(255,255,255);
+		Border->Trapped = true;
+		Border->BlurOffsets.x = 0.001f;
+		Border->BlurOffsets.y = 0.001f;
+		Border->AddChild(Body);
+		Border->AddChild(Tab);
+		Wow->AddChild(Border);
 		bool shouldDrag = false;
 		Vector2 offset;
 		std::function<void()> MouseDown = [Tab, &shouldDrag, &offset]() mutable
 		{
-			Tab->ClipsDescendants = true;
 			offset.x = Enum.Mouse.Position.x - Tab->_body.getPosition().x;
 			offset.y = Enum.Mouse.Position.y - Tab->_body.getPosition().y;
 			shouldDrag = true;
 		};
 		std::function<void()> MouseUp = [Tab, &shouldDrag, &offset]() mutable
 		{
-			Tab->ClipsDescendants = false;
 			shouldDrag = false;
 		};
-		std::function<void()> MouseMove = [Tab, &shouldDrag, &offset]() mutable
+		std::function<void()> MouseMove = [Border, &shouldDrag, &offset]() mutable
 		{
 			if (shouldDrag == true)
 			{
-				Tab->Position = Udim2(0, Enum.Mouse.Position.x - offset.x, 0, Enum.Mouse.Position.y - offset.y);
+				float xOffset = Enum.Mouse.Position.x;// -Border->_body.getPosition().x;
+				float yOffset = Enum.Mouse.Position.y;// -Border->_body.getPosition().y;
+				Border->Position = Udim2(0, xOffset - offset.x, 0, yOffset - offset.y);
 			}
 		};
 		Tab->HookEvent("MouseButton1Down", MouseDown);
@@ -58,8 +84,10 @@ namespace Solar
 	{
 		Enum.Game.find(2)->second->Tick(dt);
 	}
-	void DEBUG::Render(float dt)
+
+	void DEBUG::Render(float dt, sf::RenderTexture* target)
 	{
-		Enum.Game.find(2)->second->Render(dt);
+		target->draw(sprite);
+		Enum.Game.find(2)->second->Render(dt, target);
 	}
 }

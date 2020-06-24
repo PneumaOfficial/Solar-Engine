@@ -13,7 +13,7 @@ namespace Solar {
 		};
 		void AddChild(Instance* child);
 		void Tick(float dt);
-		void Render(float dt);
+		void Render(float dt, sf::RenderTexture* target);
 
 		void HandleEvents();
 		void HookEvent(std::string Event, std::function<void()> function);

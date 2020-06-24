@@ -16,18 +16,18 @@ namespace Solar {
 			float BackgroundTransparency;
 			float Rotation;
 			Color BackgroundColor;
-			int BorderSize;
+			float BorderSize;
 			Color BorderColor;
-			int BorderTransparency;
-			bool ClipsDescendants;
-
+			float BorderTransparency;
 			sf::Vector2f previousParentBounds;
 			sf::Vector2f previousParentPosition;
 		};
 		Events EventChecks;
 		Properties PropertyChecks;
-		sf::View CurrentView;
 	public:
+
+		sf::View CurrentView;
+
 		Frame()
 		{
 			this->Type = "Frame";
@@ -36,7 +36,7 @@ namespace Solar {
 		};
 		void AddChild(Instance* child);
 		void Tick(float dt);
-		void Render(float dt);
+		void Render(float dt, sf::RenderTexture* target);
 		bool Visible = true;
 
 		void HandleEvents();
@@ -45,10 +45,15 @@ namespace Solar {
 
 		Udim2 Size = Udim2();
 		Udim2 Position = Udim2();
-		float Transparency = 0;
+		float BackgroundTransparency = 0;
 		Color BackgroundColor = Color();
-		float BorderSize = 10;
+		float BorderSize = 0;
+		Color BorderColor = Color(0,0,0);
+		float BorderTransparency = 0;
 		bool ClipsDescendants;
+		bool Trapped;
+		bool BlurBackground;
+		Vector2 BlurOffsets;
 	};
 }
 

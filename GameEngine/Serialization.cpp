@@ -27,7 +27,7 @@ namespace Solar
 
 		//Background Transparency
 		os.append("\"BackgroundTransparency\": ");
-		os.append(std::to_string(obj->Transparency) + ",");
+		os.append(std::to_string(obj->BackgroundTransparency) + ",");
 
 		//Background Color
 		os.append("\"BackgroundColor\": {");
