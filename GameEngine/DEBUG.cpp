@@ -1,6 +1,7 @@
 #include "DEBUG.hpp"
 #include "DEFINTIONS.hpp"
 #include "Serialization.hpp"
+#include "TextLabel.hpp"
 namespace Solar
 {
 	extern struct Enums Enum;
@@ -13,10 +14,6 @@ namespace Solar
 		img.loadFromFile("Resources/testing.png");
 		texture.loadFromImage(img);
 		sprite.setTexture(texture, true);
-		//Testing
-		sf::Shader core_shader;
-		core_shader.loadFromFile("Resources/shaders/Blur/Blur.frag", sf::Shader::Fragment);
-
 
 		//Main GUI
 		main = new Folder();
@@ -33,6 +30,16 @@ namespace Solar
 		Tab->Name = "Tab Frame";
 		Tab->BackgroundColor = Color(38, 38, 38);
 		Tab->BackgroundTransparency = 0.2;
+
+		TextLabel* label = new TextLabel();
+		
+		label->Size = Udim2(0,50, 1,0);
+		label->Position = Udim2(0, 5, 0, 0);
+		label->TextColor = Color(255, 255, 255);
+		label->TextSize = 20;
+		label->Font = "OpenSans/SemiBold";
+		Tab->AddChild(label);
+
 		Frame* Body = new Frame();
 		Body->BackgroundTransparency = 0.3;
 		Body->Position = Udim2(0,0,0,25);
@@ -44,10 +51,10 @@ namespace Solar
 		Border->Position = Udim2(0, 0, 0, 0);
 		Border->BackgroundTransparency = 1;
 		Border->BorderSize = 1;
+		
 		Border->BorderColor = Color(255,255,255);
-		Border->Trapped = true;
-		Border->BlurOffsets.x = 0.001f;
-		Border->BlurOffsets.y = 0.001f;
+		Border->BlurOffsets.x = 0.002f;
+		Border->BlurOffsets.y = 0.002f;
 		Border->AddChild(Body);
 		Border->AddChild(Tab);
 		Wow->AddChild(Border);

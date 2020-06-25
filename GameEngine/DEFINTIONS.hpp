@@ -16,7 +16,7 @@
 namespace Solar
 {
 	//Structs
-	struct Fonts
+	struct FontsDir
 	{
 		const char* Arial = "Resources/fonts/arial.ttf";
 	};
@@ -55,7 +55,7 @@ namespace Solar
 	{
 		//Structs
 		WindowProperties Window;
-		Fonts Font;
+		FontsDir FontDir;
 		Framework data;
 		std::multimap<int, Instance*> Game;
 		MOUSE Mouse;

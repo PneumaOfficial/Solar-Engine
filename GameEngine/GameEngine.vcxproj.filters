@@ -37,9 +37,6 @@
     <Filter Include="Instance\Types\Folder">
       <UniqueIdentifier>{062e7028-911f-42d9-a264-4e0e3387c38f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Instance\Types\TextButton">
-      <UniqueIdentifier>{7b782e4b-801f-4401-ae98-44e3b4917e55}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scenes">
       <UniqueIdentifier>{553232d4-55cb-4880-9e8a-0c2c4bcbf60c}</UniqueIdentifier>
     </Filter>
@@ -58,6 +55,9 @@
     </Filter>
     <Filter Include="Managers\InputManager\SFML">
       <UniqueIdentifier>{af094a79-d253-4ce4-92c7-de37dfd3428e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\TextLabel">
+      <UniqueIdentifier>{7b782e4b-801f-4401-ae98-44e3b4917e55}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +105,9 @@
     </ClCompile>
     <ClCompile Include="Mouse.cpp">
       <Filter>Managers\InputManager\Mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="TextLabel.cpp">
+      <Filter>Instance\Types\TextLabel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -162,8 +165,8 @@
     <ClInclude Include="Mouse.hpp">
       <Filter>Managers\InputManager\Mouse</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Testing Scripts\Testing.lua" />
+    <ClInclude Include="TextLabel.hpp">
+      <Filter>Instance\Types\TextLabel</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

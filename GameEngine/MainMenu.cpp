@@ -27,7 +27,7 @@ namespace Solar {
 	{
 
 		//this->_data->assets.LoadTexture("Background", "Resources/MainMenu/background.png");
-		Enum.data.assets.LoadFont("arial", Enum.Font.Arial);
+		Enum.data.assets.LoadFont("arial", Enum.FontDir.Arial);
 		this->_play = sf::Text("Play", Enum.data.assets.GetFont("arial"));
 		this->_play.setPosition((Enum.Window.SCREEN_WIDTH / 2) - this->_play.getGlobalBounds().width / 2, (Enum.Window.SCREEN_HEIGHT / 2) - this->_play.getGlobalBounds().height / 2);
 

@@ -45,7 +45,7 @@ namespace Solar {
 				if (this->Position != this->PropertyChecks.Position || ParentPosition != this->PropertyChecks.previousParentPosition)
 				{
 					this->_body.setPosition(ParentPosition.x + (ParentSize.x * this->Position.x.scale) + this->Position.x.offset, ParentPosition.y + (ParentSize.y * this->Position.y.scale) + this->Position.y.offset);
-					this->Position = this->Position;
+					this->PropertyChecks.Position = this->Position;
 					this->PropertyChecks.previousParentPosition = ParentPosition;
 
 					if (this->Trapped)

@@ -60,16 +60,21 @@ namespace Solar {
 	}
 
 	//Fonts
-	void AssetManager::LoadFont(std::string name, std::string filePath) {
+	int AssetManager::LoadFont(std::string name, std::string filePath) {
 		sf::Font font;
-
+		if (this->_fonts.find(name) != this->_fonts.end())
+		{
+			return 1;
+		}
 		if (font.loadFromFile(filePath)) 
 		{
 			this->_fonts[name] = font;
+			return 1;
 		}
 		else
 		{
 			//TODO: ERROR LOGGING
+			return 0;
 		}
 	}
 	sf::Font& AssetManager::GetFont(std::string name) {

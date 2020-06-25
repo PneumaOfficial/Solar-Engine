@@ -17,7 +17,7 @@ namespace Solar {
 		void LoadShaderVertex(std::string name, std::string VertextPath);
 		sf::Shader* GetShader(std::string name);
 		//Font
-		void LoadFont(std::string name, std::string filePath);
+		int LoadFont(std::string name, std::string filePath);
 		sf::Font& GetFont(std::string name);
 		//Audio
 		void LoadAudio(std::string name, std::string filePath);
