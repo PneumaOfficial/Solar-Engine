@@ -50,16 +50,6 @@ namespace Solar {
 		Enum.Mouse.HookEvent("MouseMoved", MouseMove);
 
 	};
-	void Frame::AddChild(Instance* child)
-	{
-		if (child->Type != "Frame")
-		{
-			child->_body.setSize(this->_body.getSize());
-			child->_body.setPosition(this->_body.getPosition());
-		}
-		this->children.emplace(this->children.size() + 1, child);
-		child->Parent = this;
-	}
 
 	//Update Values
 	void Frame::Tick(float dt)
@@ -243,19 +233,5 @@ namespace Solar {
 		for (auto& x : this->children) {
 			x.second->HandleEvents();
 		}
-	}
-
-	void Frame::HookEvent(std::string Event, std::function<void()> function)
-	{
-		EventStruct fun;
-		fun.StoredFunction = function;
-		fun.EventName = Event;
-		this->EventQueue.emplace(this->EventQueue.size() + 1, fun);
-	}
-	void Frame::FireEvent(std::string Event)
-	{
-		for (auto& x : this->EventQueue)
-			if (x.second.EventName == Event)
-				x.second.StoredFunction();
 	}
 }

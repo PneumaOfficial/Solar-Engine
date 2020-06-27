@@ -20,7 +20,17 @@ namespace Solar {
 		sf::RectangleShape _body;
 		virtual void Render(float dt, sf::RenderTexture* target) = 0;
 		virtual void Tick(float dt) = 0;
-		virtual void AddChild(Instance* child) = 0;
+		void AddChild(Instance* child)
+		{
+			if (child->Type != "Frame")
+			{
+				child->_body.setSize(this->_body.getSize());
+				child->_body.setPosition(this->_body.getPosition());
+			}
+			this->children.emplace(this->children.size() + 1, child);
+			child->Parent = this;
+		};
+
 		Instance* FindFirstChild(std::string childname)
 		{
 			for (auto& x : this->children) {
@@ -30,8 +40,19 @@ namespace Solar {
 		}
 		//Events
 		virtual void HandleEvents() = 0;
-		virtual void FireEvent(std::string Event) = 0;
-		virtual void HookEvent(std::string Event, std::function<void()> function) = 0;
+		void FireEvent(std::string Event)
+		{
+			for (auto& x : this->EventQueue)
+				if (x.second.EventName == Event)
+					x.second.StoredFunction();
+		};
+		void HookEvent(std::string Event, std::function<void()> function)
+		{
+			EventStruct fun;
+			fun.StoredFunction = function;
+			fun.EventName = Event;
+			this->EventQueue.emplace(this->EventQueue.size() + 1, fun);
+		};
 
 		std::map<int, EventStruct> EventQueue;
 

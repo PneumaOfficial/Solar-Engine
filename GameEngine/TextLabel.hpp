@@ -33,14 +33,11 @@ namespace Solar
 			this->Type = "TextLabel";
 		}
 
-		void AddChild(Instance* child);
 		void Tick(float dt);
 		void Render(float dt, sf::RenderTexture* target);
 		bool Visible = true;
 
 		void HandleEvents();
-		void HookEvent(std::string Event, std::function<void()> function);
-		void FireEvent(std::string Event);
 
 		Udim2 Position;
 		Udim2 Size;

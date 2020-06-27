@@ -62,6 +62,30 @@
     <Filter Include="Instance\Types\Sound">
       <UniqueIdentifier>{4c5bf4b2-e8db-4c52-b7c7-c8c2b360b0e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Instance\Types\DataTypes">
+      <UniqueIdentifier>{3f57c210-f441-489e-a1c5-5630160dde0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\DataTypes\Vector2">
+      <UniqueIdentifier>{6acf4210-1f55-4c97-bc47-524c57700ca2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\DataTypes\Udim2">
+      <UniqueIdentifier>{5ebbf908-9f7a-48b1-b2aa-adb4ca0fd9cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\DataTypes\Bool">
+      <UniqueIdentifier>{b2deab20-b0dd-4eac-af85-d8790ec87b88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\DataTypes\Color3">
+      <UniqueIdentifier>{0d48414a-386a-4fa8-8c7f-b711e4c8999a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\DataTypes\Float">
+      <UniqueIdentifier>{75eb9911-b089-4841-9cc8-4cc933612e2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\DataTypes\String">
+      <UniqueIdentifier>{66b795dd-d355-4488-bb1c-78ffada1f070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Instance\Types\DataTypes\Int">
+      <UniqueIdentifier>{61a47211-0d1a-479f-bf54-3b33b643ba06}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -114,6 +138,9 @@
     </ClCompile>
     <ClCompile Include="Sound.cpp">
       <Filter>Instance\Types\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="BoolValue.cpp">
+      <Filter>Instance\Types\DataTypes\Bool</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -177,5 +204,12 @@
     <ClInclude Include="Sound.hpp">
       <Filter>Instance\Types\Sound</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="BoolValue.hpp">
+      <Filter>Instance\Types\DataTypes\Bool</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameEngine.rc" />
   </ItemGroup>
 </Project>

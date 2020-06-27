@@ -4,16 +4,6 @@ namespace Solar
 {
 	extern struct Enums Enum;
 
-	void TextLabel::AddChild(Instance* child)
-	{
-		if (child->Type == "Folder")
-		{
-			child->_body.setSize(this->_body.getSize());
-			child->_body.setPosition(this->_body.getPosition());
-		}
-		this->children.emplace(this->children.size() + 1, child);
-		child->Parent = this;
-	}
 	void TextLabel::Tick(float dt)
 	{
 		//TODO: Parents
@@ -112,18 +102,5 @@ namespace Solar
 		for (auto& x : this->children) {
 			x.second->HandleEvents();
 		}
-	}
-	void TextLabel::HookEvent(std::string Event, std::function<void()> function)
-	{
-		EventStruct fun;
-		fun.StoredFunction = function;
-		fun.EventName = Event;
-		this->EventQueue.emplace(this->EventQueue.size() + 1, fun);
-	}
-	void TextLabel::FireEvent(std::string Event)
-	{
-		for (auto& x : this->EventQueue)
-			if (x.second.EventName == Event)
-				x.second.StoredFunction();
 	}
 }

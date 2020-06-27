@@ -54,9 +54,7 @@ namespace Solar
 		}
 	}
 
-	void SoundHandler::FireEvent(std::string Event){}
-	void SoundHandler::HookEvent(std::string Event, std::function<void()> function){}
-	void SoundHandler::Render(float dt, sf::RenderTexture* target){}
+	void SoundHandler::Render(float dt, sf::RenderTexture* target) {};
 
 	void SoundHandler::Tick(float dt)
 	{
@@ -74,15 +72,5 @@ namespace Solar
 			x.second->Tick(dt);
 		}
 	}
-	void SoundHandler::AddChild(Instance* child)
-	{
-		if (child->Type != "Frame")
-		{
-			child->_body.setSize(this->_body.getSize());
-			child->_body.setPosition(this->_body.getPosition());
-		}
-		this->children.emplace(this->children.size() + 1, child);
-		child->Parent = this;
-	};
 
 }

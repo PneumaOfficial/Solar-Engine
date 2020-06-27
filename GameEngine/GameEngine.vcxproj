@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AssetManager.cpp" />
+    <ClCompile Include="BoolValue.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="DEBUG.cpp" />
     <ClCompile Include="Folder.cpp" />
@@ -169,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AssetManager.hpp" />
+    <ClInclude Include="BoolValue.hpp" />
     <ClInclude Include="Color.hpp" />
     <ClInclude Include="DataTypes.hpp" />
     <ClInclude Include="DEBUG.hpp" />
@@ -180,6 +182,7 @@
     <ClInclude Include="Instance.hpp" />
     <ClInclude Include="MainMenu.hpp" />
     <ClInclude Include="Mouse.hpp" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Serialization.hpp" />
     <ClInclude Include="SFMLEventHandler.hpp" />
     <ClInclude Include="Sound.hpp" />
@@ -188,6 +191,9 @@
     <ClInclude Include="StateMachine.hpp" />
     <ClInclude Include="TextLabel.hpp" />
     <ClInclude Include="Udim2.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="GameEngine.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -20,12 +20,9 @@ namespace Solar
 
 		//Instance stuff
 		void HandleEvents();
-		void FireEvent(std::string Event);
-		void HookEvent(std::string Event, std::function<void()> function);
 
 		void Render(float dt, sf::RenderTexture* target);
 		void Tick(float dt);
-		void AddChild(Instance* child);
 	};
 
 	class SoundObject
