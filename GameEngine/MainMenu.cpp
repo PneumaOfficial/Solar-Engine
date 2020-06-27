@@ -5,7 +5,7 @@
 namespace Solar {
 	extern struct Enums Enum;
 	MainMenuState::MainMenuState() : State("Game") {
-		this->Game.Name = "Workspace";
+		this->Game.Name = "Game";
 
 		//Game Objects
 		Folder* Workspace = new Folder();

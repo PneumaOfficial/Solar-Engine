@@ -3,9 +3,56 @@
 #include "DEFINTIONS.hpp"
 namespace Solar {
 	extern struct Enums Enum;
+	Frame::Frame()
+	{
+		this->Type = "Frame";
+		this->Size = Udim2(0.0f, 50.0f, 0.0f, 50.0f);
+		std::function<void()> ScrollUpEvent = [this]() mutable
+		{
+			if (this->Hovered)
+				this->FireEvent("ScrollUp");
+		};
+		std::function<void()> ScrollDownEvent = [this]() mutable
+		{
+			if (this->Hovered)
+				this->FireEvent("ScrollDown");
+		};
+		Enum.Mouse.HookEvent("ScrollUp", ScrollUpEvent);
+		Enum.Mouse.HookEvent("ScrollDown", ScrollDownEvent);
+
+		//Draggable Property
+		std::function<void()> MouseDown = [this]() mutable
+		{
+			if (!this->Draggable)
+				return;
+			this->offset.x = Enum.Mouse.Position.x - this->_body.getPosition().x;
+			this->offset.y = Enum.Mouse.Position.y - this->_body.getPosition().y;
+			shouldDrag = true;
+		};
+		std::function<void()> MouseUp = [this]() mutable
+		{
+			if (!this->Draggable)
+				return;
+			this->shouldDrag = false;
+		};
+		std::function<void()> MouseMove = [this]() mutable
+		{
+			if (!this->Draggable || this->shouldDrag != true)
+				return;
+
+			float xOffset = Enum.Mouse.Position.x;
+			float yOffset = Enum.Mouse.Position.y;
+			this->Position = Udim2(0, xOffset - this->offset.x, 0, yOffset - this->offset.y);
+		};
+
+		this->HookEvent("MouseButton1Down", MouseDown);
+		Enum.Mouse.HookEvent("LeftUp", MouseUp);
+		Enum.Mouse.HookEvent("MouseMoved", MouseMove);
+
+	};
 	void Frame::AddChild(Instance* child)
 	{
-		if (child->Type == "Folder")
+		if (child->Type != "Frame")
 		{
 			child->_body.setSize(this->_body.getSize());
 			child->_body.setPosition(this->_body.getPosition());
@@ -17,6 +64,13 @@ namespace Solar {
 	//Update Values
 	void Frame::Tick(float dt)
 	{
+		//TODO: Parents
+		/*if (this->Parent != this->PreviousParent)
+		{
+			std::cout << "PARENT CHANGE!" << std::endl;
+			this->Parent->AddChild(this);
+			this->PreviousParent = this->Parent;
+		}*/
 		if (this->Enabled) 
 		{
 			if (this->Parent != nil)

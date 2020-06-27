@@ -2,30 +2,32 @@
 #include <map>
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
-
+#include <iostream>
+#include <filesystem>
 namespace Solar {
 	class AssetManager {
 	public:
-		AssetManager() {};
+		AssetManager();
 		~AssetManager() {};
 		//Texture
 		void LoadTexture(std::string name, std::string filePath);
 		sf::Texture& GetTexture(std::string name);
-		//Shader
-		void LoadShader(std::string name, std::string VertextPath, std::string FragPath);
-		void LoadShaderFrag(std::string name, std::string FragPath);
-		void LoadShaderVertex(std::string name, std::string VertextPath);
-		sf::Shader* GetShader(std::string name);
+
 		//Font
 		int LoadFont(std::string name, std::string filePath);
 		sf::Font& GetFont(std::string name);
 		//Audio
-		void LoadAudio(std::string name, std::string filePath);
-		sf::SoundBuffer GetAudio(std::string name);
+		int LoadMusic(std::string filePath);
+		sf::Music* GetMusic(std::string name);
+
+		int LoadBuffer(std::string filePath);
+		const sf::SoundBuffer& GetBuffer(std::string name);
 	private:
+		void loadFonts();
+
 		std::map<std::string, sf::Texture> _textures;
 		std::map<std::string, sf::Font> _fonts;
-		std::map<std::string, sf::SoundBuffer> _audio;
-		std::map<std::string, sf::Shader*> _shaders;
+		std::map<std::string, sf::Music*> _music;
+		std::map<std::string, sf::SoundBuffer> _buffer;
 	};
 }

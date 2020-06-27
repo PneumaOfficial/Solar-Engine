@@ -11,6 +11,7 @@ namespace Solar {
 		};
 		struct Properties
 		{
+
 			Udim2 Position;
 			Udim2 Size;
 			float BackgroundTransparency;
@@ -25,15 +26,13 @@ namespace Solar {
 		Events EventChecks;
 		Properties PropertyChecks;
 	public:
-
+		bool shouldDrag = false;
+		Vector2 offset;
+		bool& Hovered = this->EventChecks.Hovered;
+		bool& Pressed = this->EventChecks.Pressed;
 		sf::View CurrentView;
 
-		Frame()
-		{
-			this->Type = "Frame";
-			this->Size = Udim2(0.0f, 50.0f, 0.0f, 50.0f);
-			this->Position = Udim2();
-		};
+		Frame();
 		void AddChild(Instance* child);
 		void Tick(float dt);
 		void Render(float dt, sf::RenderTexture* target);
@@ -53,6 +52,7 @@ namespace Solar {
 		bool ClipsDescendants;
 		bool Trapped;
 		bool BlurBackground;
+		bool Draggable;
 		Vector2 BlurOffsets;
 	};
 }

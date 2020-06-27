@@ -1,6 +1,16 @@
 #include "AssetManager.hpp"
 
 namespace Solar {
+
+	void AssetManager::loadFonts()
+	{
+		namespace fs = std::filesystem;
+		//TODO: Load items
+	}
+	AssetManager::AssetManager()
+	{
+		
+	}
 	//Textures
 	void AssetManager::LoadTexture(std::string name, std::string filePath){
 		sf::Texture tex;
@@ -15,48 +25,6 @@ namespace Solar {
 	}
 	sf::Texture& AssetManager::GetTexture(std::string name){
 		return this->_textures.at(name);
-	}
-
-	//Shaders
-
-	void AssetManager::LoadShader(std::string name, std::string VertexPath, std::string FragPath) {
-		sf::Shader shader;
-
-		if (shader.loadFromFile(VertexPath, FragPath))
-		{
-			this->_shaders[name] = &shader;
-		}
-		else
-		{
-			//TODO: ERROR LOGGING
-		}
-	}
-	void AssetManager::LoadShaderFrag(std::string name, std::string FragPath)
-	{
-		sf::Shader shader;
-		if (shader.loadFromFile(FragPath, sf::Shader::Fragment))
-		{
-			this->_shaders[name] = &shader;
-		}
-		else
-		{
-			//TODO: ERROR LOGGING
-		}
-	}
-	void AssetManager::LoadShaderVertex(std::string name, std::string VertexPath)
-	{
-		sf::Shader shader;
-		if (shader.loadFromFile(VertexPath, sf::Shader::Vertex))
-		{
-			this->_shaders[name] = &shader;
-		}
-		else
-		{
-			//TODO: ERROR LOGGING
-		}
-	}
-	sf::Shader* AssetManager::GetShader(std::string name) {
-		return this->_shaders.at(name);
 	}
 
 	//Fonts
@@ -82,21 +50,57 @@ namespace Solar {
 	}
 
 	//Audio
-	void AssetManager::LoadAudio(std::string name, std::string filePath)
+	int AssetManager::LoadMusic(std::string filePath)
 	{
-		sf::SoundBuffer audio;
+		if (this->_music.find(filePath) != this->_music.end())
+		{
+			return 1;
+		}
+		sf::Music* audio = new sf::Music();
+		if (audio->openFromFile(filePath)) {
+			this->_music[filePath] = audio;
+			return 1;
+		}
+		else
+		{
+			//TODO: ERROR LOGGING
+			return 0;
+		}
+	}
 
+	sf::Music* AssetManager::GetMusic(std::string name)
+	{
+		return this->_music.at(name);
+	}
+
+
+	int AssetManager::LoadBuffer(std::string filePath)
+	{
+		if (this->_buffer.find(filePath) != this->_buffer.end())
+		{
+			return 1;
+		}
+		sf::SoundBuffer audio;
 		if (audio.loadFromFile(filePath)) {
-			this->_audio[name] = audio;
+			this->_buffer[filePath] = audio;
+			return 1;
+		}
+		else
+		{
+			//TODO: ERROR LOGGING
+			return 0;
+		}
+	}
+
+	const sf::SoundBuffer& AssetManager::GetBuffer(std::string name)
+	{
+		if (this->_buffer.find(name) != this->_buffer.end())
+		{
+			return this->_buffer.at(name);
 		}
 		else
 		{
 			//TODO: ERROR LOGGING
 		}
-	}
-
-	sf::SoundBuffer AssetManager::GetAudio(std::string name)
-	{
-		return this->_audio.at(name);
 	}
 }

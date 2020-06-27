@@ -16,6 +16,13 @@ namespace Solar
 	}
 	void TextLabel::Tick(float dt)
 	{
+		//TODO: Parents
+		/*if (this->Parent != this->PreviousParent)
+		{
+			std::cout << "PARENT CHANGE!" << std::endl;
+			this->Parent->AddChild(this);
+			this->PreviousParent = this->Parent;
+		}*/
 		sf::Vector2f ParentSize = this->Parent->_body.getSize();
 		sf::Vector2f ParentPosition = this->Parent->_body.getPosition();
 		if (this->Text != this->Properties.Text)
@@ -27,9 +34,9 @@ namespace Solar
 		if (this->Font != this->Properties.Font)
 		{
 			std::string dir = "Resources/fonts/" + this->Font + ".ttf";
-			if (Enum.data.assets.LoadFont(dir, dir))
+			if (Enum.data.assets.LoadFont(this->Properties.Font, dir))
 			{
-				this->_text.setFont(Enum.data.assets.GetFont(dir));
+				this->_text.setFont(Enum.data.assets.GetFont(this->Properties.Font));
 				this->_ValidFont = true;
 			}
 			else

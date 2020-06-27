@@ -28,7 +28,6 @@ namespace Solar {
 		Enum.data.window.setView(Enum.data.DefaultView);
 		Enum.data.window.setVerticalSyncEnabled(true);
 		Enum.data.machine.AddState(StateRef(new SplashState()));
-		Enum.data.assets.LoadShaderFrag("Blur1", "Resources/shaders/Blur/Blur.frag");
 
 		this->Run();
 	}

@@ -2,6 +2,7 @@
 #include "DEFINTIONS.hpp"
 #include "Serialization.hpp"
 #include "TextLabel.hpp"
+#include "Sound.hpp"
 namespace Solar
 {
 	extern struct Enums Enum;
@@ -30,7 +31,10 @@ namespace Solar
 		Tab->Name = "Tab Frame";
 		Tab->BackgroundColor = Color(38, 38, 38);
 		Tab->BackgroundTransparency = 0.2;
-
+		SoundHandler* sound = new SoundHandler();
+		sound->FilePath = "Resources/audio/TestingAudio.wav";
+		sound->Name = "SoundEffect";
+		Tab->AddChild(sound);
 		TextLabel* label = new TextLabel();
 		
 		label->Size = Udim2(0,50, 1,0);
@@ -47,7 +51,7 @@ namespace Solar
 		Body->Size = Udim2(1, 0, 0, 350);
 		Frame* Border = new Frame();
 		Border->BlurBackground = true;
-		Border->Size = Udim2(1,0,0,375);
+		Border->Size = Udim2(0,420,0,375);
 		Border->Position = Udim2(0, 0, 0, 0);
 		Border->BackgroundTransparency = 1;
 		Border->BorderSize = 1;
@@ -57,11 +61,15 @@ namespace Solar
 		Border->BlurOffsets.y = 0.002f;
 		Border->AddChild(Body);
 		Border->AddChild(Tab);
-		Wow->AddChild(Border);
+		Border->Trapped = true;
+		main->AddChild(Border);
 		bool shouldDrag = false;
 		Vector2 offset;
 		std::function<void()> MouseDown = [Tab, &shouldDrag, &offset]() mutable
 		{
+			auto sound = (SoundHandler*) Tab->FindFirstChild("SoundEffect");
+			sound->Play();
+
 			offset.x = Enum.Mouse.Position.x - Tab->_body.getPosition().x;
 			offset.y = Enum.Mouse.Position.y - Tab->_body.getPosition().y;
 			shouldDrag = true;
@@ -74,11 +82,12 @@ namespace Solar
 		{
 			if (shouldDrag == true)
 			{
-				float xOffset = Enum.Mouse.Position.x;// -Border->_body.getPosition().x;
-				float yOffset = Enum.Mouse.Position.y;// -Border->_body.getPosition().y;
+				float xOffset = Enum.Mouse.Position.x;
+				float yOffset = Enum.Mouse.Position.y;
 				Border->Position = Udim2(0, xOffset - offset.x, 0, yOffset - offset.y);
 			}
 		};
+
 		Tab->HookEvent("MouseButton1Down", MouseDown);
 		Enum.Mouse.HookEvent("LeftUp", MouseUp);
 		Enum.Mouse.HookEvent("MouseMoved", MouseMove);

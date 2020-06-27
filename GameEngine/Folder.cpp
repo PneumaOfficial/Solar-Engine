@@ -6,7 +6,7 @@ namespace Solar {
 	extern struct Enums Enum;
 	void Folder::AddChild(Instance* child)
 	{
-		if (child->Type == "Folder")
+		if (child->Type != "Frame")
 		{
 			child->_body.setSize(this->_body.getSize());
 			child->_body.setPosition(this->_body.getPosition());
@@ -15,6 +15,13 @@ namespace Solar {
 		child->Parent = this;
 	}
 	void Folder::Tick(float dt){
+		//TODO: Parents
+		/*if (this->Parent != this->PreviousParent)
+		{
+			std::cout << "PARENT CHANGE!" << std::endl;
+			this->Parent->AddChild(this);
+			this->PreviousParent = this->Parent;
+		}*/
 		if (this->Parent == nil)
 		{
 			return;

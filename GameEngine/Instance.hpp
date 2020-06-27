@@ -21,6 +21,13 @@ namespace Solar {
 		virtual void Render(float dt, sf::RenderTexture* target) = 0;
 		virtual void Tick(float dt) = 0;
 		virtual void AddChild(Instance* child) = 0;
+		Instance* FindFirstChild(std::string childname)
+		{
+			for (auto& x : this->children) {
+				if(x.second->Name == childname)
+					return x.second;
+			}
+		}
 		//Events
 		virtual void HandleEvents() = 0;
 		virtual void FireEvent(std::string Event) = 0;
@@ -31,7 +38,9 @@ namespace Solar {
 		std::string Name;
 		std::string Type;
 		bool Enabled = true;
-
+		int LastID;
+		int ID;
+		Instance* PreviousParent = nil;
 		Instance* Parent = nil;
 		std::map <int, Instance*> children;
 
