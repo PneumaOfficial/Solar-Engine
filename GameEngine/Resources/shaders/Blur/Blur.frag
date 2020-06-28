@@ -17,4 +17,5 @@ void main()
 	color += texture2D(source, textureCoordinates + 3.0 * offsetFactor) * 0.0540540541;
 	color += texture2D(source, textureCoordinates + 4.0 * offsetFactor) * 0.0162162162;
 	gl_FragColor = color;
+	
 }

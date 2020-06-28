@@ -174,6 +174,7 @@ namespace Solar {
 					(Pos.y * Enum.Window.SCREEN_HEIGHT) + ((Siz.y * Enum.Window.SCREEN_HEIGHT) / 2)));
 				Enum.data.window.setView(region);
 			}
+
 			this->CurrentView = Enum.data.window.getView();
 			if (this->Visible) {
 				if (this->BlurBackground)

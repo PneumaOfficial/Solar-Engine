@@ -1,14 +1,14 @@
-#include "BoolValue.hpp"
+#include "Color3Value.hpp"
 
 namespace Solar
 {
-	void BoolValue::Render(float dt, sf::RenderTexture* target)
+	void Color3Value::Render(float dt, sf::RenderTexture* target)
 	{
 		for (auto& x : this->children) {
 			x.second->Render(dt, target);
 		}
 	}
-	void BoolValue::Tick(float dt)
+	void Color3Value::Tick(float dt)
 	{
 
 		if (this->Value != this->Properties.Value)
@@ -23,7 +23,7 @@ namespace Solar
 		}
 	}
 
-	void BoolValue::HandleEvents()
+	void Color3Value::HandleEvents()
 	{
 		for (auto& x : this->children) {
 			x.second->HandleEvents();

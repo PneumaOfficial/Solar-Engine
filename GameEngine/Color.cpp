@@ -2,24 +2,24 @@
 
 namespace Solar
 {
-	Solar::Color::Color(){}
+	Color::Color(){}
 
-	Solar::Color::Color(int Red, int Green, int Blue)
+	Color::Color(int Red, int Green, int Blue)
 	{
 		this->Red = Red;
 		this->Green = Green;
 		this->Blue = Blue;
 	}
 
-	int Solar::Color::getRed()
+	int Color::getRed()
 	{
 		return this->Red;
 	}
-	int Solar::Color::getGreen()
+	int Color::getGreen()
 	{
 		return this->Green;
 	}
-	int Solar::Color::getBlue()
+	int Color::getBlue()
 	{
 		return this->Blue;
 	}

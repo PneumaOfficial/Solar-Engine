@@ -1,14 +1,14 @@
-#include "BoolValue.hpp"
+#include "IntValue.hpp"
 
 namespace Solar
 {
-	void BoolValue::Render(float dt, sf::RenderTexture* target)
+	void IntValue::Render(float dt, sf::RenderTexture* target)
 	{
 		for (auto& x : this->children) {
 			x.second->Render(dt, target);
 		}
 	}
-	void BoolValue::Tick(float dt)
+	void IntValue::Tick(float dt)
 	{
 
 		if (this->Value != this->Properties.Value)
@@ -23,7 +23,7 @@ namespace Solar
 		}
 	}
 
-	void BoolValue::HandleEvents()
+	void IntValue::HandleEvents()
 	{
 		for (auto& x : this->children) {
 			x.second->HandleEvents();

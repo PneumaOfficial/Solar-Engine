@@ -1,20 +1,20 @@
 #pragma once
-
+#include "DataTypes.hpp"
 #include "Instance.hpp"
 namespace Solar
 {
-	class BoolValue : public Instance
+	class Vector2Value : public Instance
 	{
 	private:
 		struct propertyChecks
 		{
-			bool Value;
+			Vector2 Value;
 		};
 		propertyChecks Properties;
 	public:
-		bool Value;
+		Vector2 Value;
 
-		BoolValue() {};
+		Vector2Value() {};
 		//Instance Requirements
 		void Render(float dt, sf::RenderTexture* target);
 		void Tick(float dt);

@@ -1,20 +1,20 @@
 #pragma once
-
+#include "Color.hpp"
 #include "Instance.hpp"
 namespace Solar
 {
-	class BoolValue : public Instance
+	class FloatValue : public Instance
 	{
 	private:
 		struct propertyChecks
 		{
-			bool Value;
+			float Value;
 		};
 		propertyChecks Properties;
 	public:
-		bool Value;
+		float Value;
 
-		BoolValue() {};
+		FloatValue() {};
 		//Instance Requirements
 		void Render(float dt, sf::RenderTexture* target);
 		void Tick(float dt);

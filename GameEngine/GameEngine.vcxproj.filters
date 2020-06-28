@@ -142,6 +142,24 @@
     <ClCompile Include="BoolValue.cpp">
       <Filter>Instance\Types\DataTypes\Bool</Filter>
     </ClCompile>
+    <ClCompile Include="Color3Value.cpp">
+      <Filter>Instance\Types\DataTypes\Color3</Filter>
+    </ClCompile>
+    <ClCompile Include="FloatValue.cpp">
+      <Filter>Instance\Types\DataTypes\Float</Filter>
+    </ClCompile>
+    <ClCompile Include="IntValue.cpp">
+      <Filter>Instance\Types\DataTypes\Int</Filter>
+    </ClCompile>
+    <ClCompile Include="StringValue.cpp">
+      <Filter>Instance\Types\DataTypes\String</Filter>
+    </ClCompile>
+    <ClCompile Include="Udim2Value.cpp">
+      <Filter>Instance\Types\DataTypes\Udim2</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2Value.cpp">
+      <Filter>Instance\Types\DataTypes\Vector2</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StateMachine.hpp">
@@ -207,6 +225,24 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="BoolValue.hpp">
       <Filter>Instance\Types\DataTypes\Bool</Filter>
+    </ClInclude>
+    <ClInclude Include="Color3Value.hpp">
+      <Filter>Instance\Types\DataTypes\Color3</Filter>
+    </ClInclude>
+    <ClInclude Include="FloatValue.hpp">
+      <Filter>Instance\Types\DataTypes\Float</Filter>
+    </ClInclude>
+    <ClInclude Include="IntValue.hpp">
+      <Filter>Instance\Types\DataTypes\Int</Filter>
+    </ClInclude>
+    <ClInclude Include="StringValue.hpp">
+      <Filter>Instance\Types\DataTypes\String</Filter>
+    </ClInclude>
+    <ClInclude Include="Udim2Value.hpp">
+      <Filter>Instance\Types\DataTypes\Udim2</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2Value.hpp">
+      <Filter>Instance\Types\DataTypes\Vector2</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
