@@ -3,18 +3,14 @@
 namespace Solar
 {
 	extern struct Enums Enum;
-	SoundObject::SoundObject()
-	{
-	}
+	SoundObject::SoundObject() {};
 	void SoundObject::Pause()
 	{
 		this->_sound->pause();
 	}
 	void SoundObject::Resume()
 	{
-		std::cout << "Should be playing: " << this->handler->ActiveSounds.size() << " sounds playing." << std::endl;
 		this->_sound->play();
-
 	}
 
 	void SoundObject::Stop()

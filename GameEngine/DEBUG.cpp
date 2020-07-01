@@ -21,11 +21,13 @@ namespace Solar
 		main->Name = "GUI";
 		Enum.Game.find(2)->second->AddChild(main);
 		Frame* Wow = new Frame();
-		Wow->Visible = false;
-		Wow->Size = Udim2(0.5,0,1,0);
-		Wow->Position = Udim2(0,0,0,0);
+		//Wow->Visible = false;
+		Wow->Size = Udim2(0.5,0,0.5,0);
+		Wow->Position = Udim2(0.2,0,0.2,0);
 		Wow->BackgroundColor = Color(77, 121, 255);
+		Wow->ClipsDescendants = true;
 		main->AddChild(Wow);
+
 		Frame* Tab = new Frame();
 		Tab->Size = Udim2(1, 0, 0, 25);
 		Tab->Name = "Tab Frame";
@@ -59,17 +61,19 @@ namespace Solar
 		Border->BorderColor = Color(255,255,255);
 		Border->BlurOffsets.x = 0.002f;
 		Border->BlurOffsets.y = 0.002f;
+		Border->ClipsDescendants = true;
 		Border->AddChild(Body);
 		Border->AddChild(Tab);
-		Border->Trapped = true;
-		main->AddChild(Border);
+		//Border->Trapped = true;
+		Wow->AddChild(Border);
+		
 		bool shouldDrag = false;
 		Vector2 offset;
 		std::function<void()> MouseDown = [Tab, &shouldDrag, &offset]() mutable
 		{
 			auto sound = (SoundHandler*) Tab->FindFirstChild("SoundEffect");
 			sound->Play();
-
+			
 			offset.x = Enum.Mouse.Position.x - Tab->_body.getPosition().x;
 			offset.y = Enum.Mouse.Position.y - Tab->_body.getPosition().y;
 			shouldDrag = true;
@@ -82,9 +86,9 @@ namespace Solar
 		{
 			if (shouldDrag == true)
 			{
-				float xOffset = Enum.Mouse.Position.x;
-				float yOffset = Enum.Mouse.Position.y;
-				Border->Position = Udim2(0, xOffset - offset.x, 0, yOffset - offset.y);
+				float xOffset = Enum.Mouse.Position.x - Border->_body.getPosition().x;
+				float yOffset = Enum.Mouse.Position.y - Border->_body.getPosition().y;
+				Border->Position = Udim2(0, (xOffset + offset.x), 0, yOffset + offset.y);
 			}
 		};
 

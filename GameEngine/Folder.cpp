@@ -38,8 +38,6 @@ namespace Solar {
 	void Folder::HandleEvents()
 	{
 		//Events
-
-
 		for (auto& x : this->children) {
 			x.second->HandleEvents();
 		}

@@ -14,6 +14,11 @@ namespace Solar {
 		std::string EventName;
 		std::function<void()> StoredFunction;
 	};
+	constexpr
+		unsigned int hash(const char* str, int h = 0)
+	{
+		return !str[h] ? 5381 : (hash(str, h + 1) * 33) ^ str[h];
+	}
 	class Instance {
 	public:
 
@@ -31,10 +36,10 @@ namespace Solar {
 			child->Parent = this;
 		};
 
-		Instance* FindFirstChild(std::string childname)
+		auto* FindFirstChild(std::string childname)
 		{
 			for (auto& x : this->children) {
-				if(x.second->Name == childname)
+				if (x.second->Name == childname)
 					return x.second;
 			}
 		}

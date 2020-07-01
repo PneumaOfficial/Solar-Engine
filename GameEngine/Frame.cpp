@@ -126,7 +126,7 @@ namespace Solar {
 		if (this->Enabled) {
 			if (this->ClipsDescendants)
 			{
-				sf::View region = Enum.data.window.getView();
+				sf::View region = target->getView();
 				
 				sf::Vector2f Siz = sf::Vector2f(
 					this->_body.getGlobalBounds().width / Enum.Window.SCREEN_WIDTH,
@@ -137,17 +137,27 @@ namespace Solar {
 					this->_body.getPosition().x / Enum.Window.SCREEN_WIDTH,
 					this->_body.getPosition().y / Enum.Window.SCREEN_HEIGHT
 				);
-				/*if (region.getViewport().top < Pos.y)
+
+				if (region.getViewport().top > Pos.y)
 				{
-					float max = (region.getViewport().top + region.getViewport().height) - (Siz.y);
-					float tempHeight = max - Siz.y;
-					std::cout << "New Pos: " << max << std::endl;
-					std::cout << "New Size: " << tempHeight << std::endl;
+					float max = (region.getViewport().top) - (Pos.y);//+ region.getViewport().height);
+					float tempHeight = Siz.y - max;
 					if (tempHeight < 0)
 						tempHeight = 0.f;
-					Pos.y = Pos.y + (Siz.y - tempHeight);
 					Siz.y = tempHeight;
-				}*/
+					Pos.y = Pos.y + max;
+				}
+
+				if (region.getViewport().left > Pos.x)
+				{
+					float max = (region.getViewport().left) - (Pos.x);//+ region.getViewport().height);
+					float tempHeight = Siz.x - max;
+					if (tempHeight < 0)
+						tempHeight = 0.f;
+					Siz.x = tempHeight;
+					Pos.x = Pos.x + max;
+				}
+
 				if (region.getViewport().left + region.getViewport().width < Siz.x + Pos.x)
 				{
 					float max = (Siz.x + Pos.x) - (region.getViewport().left + region.getViewport().width);
@@ -172,7 +182,7 @@ namespace Solar {
 				region.setCenter(sf::Vector2f(
 					(Pos.x * Enum.Window.SCREEN_WIDTH) + ((Siz.x * Enum.Window.SCREEN_WIDTH) / 2),
 					(Pos.y * Enum.Window.SCREEN_HEIGHT) + ((Siz.y * Enum.Window.SCREEN_HEIGHT) / 2)));
-				Enum.data.window.setView(region);
+				target->setView(region);
 			}
 
 			this->CurrentView = Enum.data.window.getView();
@@ -190,6 +200,7 @@ namespace Solar {
 				}
 				target->draw(this->_body);
 			}
+
 			for (auto& x : this->children) {
 				if (x.second->Type == "Folder")
 				{

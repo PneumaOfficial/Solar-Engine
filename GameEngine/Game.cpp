@@ -70,7 +70,7 @@ namespace Solar {
 			Enum.data.machine.GetActiveState()->Game.Render(interpolation, target);
 			Enum.data.window.setView(Enum.data.window.getDefaultView());
 			Enum.Debug.Render(interpolation, target);
-			Enum.data.window.setView(Enum.data.window.getDefaultView());
+			target->setView(Enum.data.window.getDefaultView());
 			target->display();
 			Enum.data.window.draw(sf::Sprite(target->getTexture()));
 			Enum.data.window.display();
