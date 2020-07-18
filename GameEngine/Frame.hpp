@@ -26,13 +26,13 @@ namespace Solar {
 		Events EventChecks;
 		Properties PropertyChecks;
 	public:
+		Frame();
 		bool shouldDrag = false;
 		Vector2 offset;
 		bool& Hovered = this->EventChecks.Hovered;
 		bool& Pressed = this->EventChecks.Pressed;
 		sf::View CurrentView;
 
-		Frame();
 		void Tick(float dt);
 		void Render(float dt, sf::RenderTexture* target);
 		bool Visible = true;
@@ -52,5 +52,10 @@ namespace Solar {
 		bool Draggable;
 		Vector2 BlurOffsets;
 	};
+
+	auto CreateFrame()
+	{
+		return std::make_unique<Frame>();
+	}
 }
 

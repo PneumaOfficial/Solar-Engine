@@ -2,12 +2,8 @@
 
 namespace Solar
 {
-	void Vector2Value::Render(float dt, sf::RenderTexture* target)
-	{
-		for (auto& x : this->children) {
-			x.second->Render(dt, target);
-		}
-	}
+	void Vector2Value::Render(float dt, sf::RenderTexture* target){}
+
 	void Vector2Value::Tick(float dt)
 	{
 
@@ -18,15 +14,15 @@ namespace Solar
 			this->Properties.Value = this->Value;
 		}
 
-		for (auto& x : this->children) {
-			x.second->Tick(dt);
+		for (std::size_t i = 0; i < this->children.size(); ++i) {
+			this->children[i]->Tick(dt);
 		}
 	}
 
 	void Vector2Value::HandleEvents()
 	{
-		for (auto& x : this->children) {
-			x.second->HandleEvents();
+		for (std::size_t i = 0; i < this->children.size(); ++i) {
+			this->children[i]->HandleEvents();
 		}
 	}
 

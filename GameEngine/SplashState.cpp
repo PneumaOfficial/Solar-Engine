@@ -5,10 +5,7 @@
 
 namespace Solar {
 	extern struct Enums Enum;
-	SplashState::SplashState() : State("Game")
-	{
-		this->Game.Name = "Game";
-	}
+	SplashState::SplashState() : State() {};
 
 	void SplashState::Init() {
 		

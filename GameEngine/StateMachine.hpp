@@ -10,7 +10,12 @@ namespace Solar {
 
 	class StateMachine {
 	public:
-		StateMachine() {}
+		StateMachine() 
+		{
+			this->_isRemoving = false;
+			this->_isAdding = false;
+			this->_isReplacing = false;
+		}
 		~StateMachine() {}
 
 		void AddState(StateRef newState, bool isReplacing = true);

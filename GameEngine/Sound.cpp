@@ -23,12 +23,12 @@ namespace Solar
 	{
 		this->Type = "SoundEffect";
 	}
-	std::shared_ptr<SoundObject> SoundHandler::Play()
+	std::unique_ptr<SoundObject> SoundHandler::Play()
 	{
-		std::shared_ptr<SoundObject> returning = std::make_shared<SoundObject>(SoundObject());
+		auto returning = std::make_unique<SoundObject>(SoundObject());
 		returning->handler = this;
 		returning->ID = this->ActiveSounds.size() + 1;
-		this->ActiveSounds[returning->ID] = returning;
+		this->ActiveSounds.push_back(returning);
 		if (Enum.data.assets.LoadBuffer(this->FilePath))
 		{
 			returning->_sound->setBuffer(Enum.data.assets.GetBuffer(this->FilePath));
@@ -45,8 +45,8 @@ namespace Solar
 	//Instance Stuff
 	void SoundHandler::HandleEvents()
 	{
-		for (auto& x : this->children) {
-			x.second->HandleEvents();
+		for (std::size_t i = 0; i < this->children.size(); ++i) {
+			this->children[i]->HandleEvents();
 		}
 	}
 
@@ -54,18 +54,18 @@ namespace Solar
 
 	void SoundHandler::Tick(float dt)
 	{
-		for (auto x = this->ActiveSounds.begin(); x != this->ActiveSounds.end(); ) {
-			if (x->second->_sound->getStatus() == sf::SoundSource::Stopped)
+		for (unsigned pos = 0; pos < this->ActiveSounds.size(); ++pos)
+		{
+			auto& i = this->ActiveSounds[pos];
+			if (i->_sound->getStatus() == sf::SoundSource::Stopped)
 			{
-				delete x->second->_sound;
-				x = this->ActiveSounds.erase(x);
+				delete i->_sound;
+				this->ActiveSounds.erase(this->ActiveSounds.begin() + (pos - 1));
 			}
-			else
-				++x;
 		}
 
-		for (auto& x : this->children) {
-			x.second->Tick(dt);
+		for (std::size_t i = 0; i < this->children.size(); ++i) {
+			this->children[i]->Tick(dt);
 		}
 	}
 

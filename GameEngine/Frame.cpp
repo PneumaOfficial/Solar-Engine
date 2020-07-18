@@ -54,13 +54,6 @@ namespace Solar {
 	//Update Values
 	void Frame::Tick(float dt)
 	{
-		//TODO: Parents
-		/*if (this->Parent != this->PreviousParent)
-		{
-			std::cout << "PARENT CHANGE!" << std::endl;
-			this->Parent->AddChild(this);
-			this->PreviousParent = this->Parent;
-		}*/
 		if (this->Enabled) 
 		{
 			if (this->Parent != nil)
@@ -116,8 +109,11 @@ namespace Solar {
 					this->PropertyChecks.previousParentBounds = ParentSize;
 				}
 			} 
-			for (auto& x : this->children) {
+			/*for (auto& x : this->children) {
 				x.second->Tick(dt);
+			}*/
+			for (int i = 0; i != this->children.size(); i++ ) {
+				this->children[i]->Tick(dt);
 			}
 		}
 	}
@@ -201,13 +197,14 @@ namespace Solar {
 				target->draw(this->_body);
 			}
 
-			for (auto& x : this->children) {
-				if (x.second->Type == "Folder")
+			for (int i = 0; i != this->children.size(); i++) {
+				auto& Selected = this->children[i];
+				if (Selected->Type == "Folder")
 				{
-					x.second->_body.setPosition(this->_body.getPosition());
-					x.second->_body.setSize(this->_body.getSize());
+					Selected->_body.setPosition(this->_body.getPosition());
+					Selected->_body.setSize(this->_body.getSize());
 				}
-				x.second->Render(dt, target);
+				Selected->Render(dt, target);
 			}
 		}
 	}
@@ -242,8 +239,8 @@ namespace Solar {
 		}
 
 
-		for (auto& x : this->children) {
-			x.second->HandleEvents();
+		for (int i = 0; i != this->children.size(); i++) {
+			this->children[i]->HandleEvents();
 		}
 	}
 }

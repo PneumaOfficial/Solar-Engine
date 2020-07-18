@@ -57,7 +57,7 @@ namespace Solar
 		WindowProperties Window;
 		FontsDir FontDir;
 		Framework data;
-		std::multimap<int, Instance*> Game;
+		std::unordered_map<int, std::unique_ptr<Instance>> Game;
 		MOUSE Mouse;
 		DEBUG Debug;
 		SFMLEventHandler SFMLEVENTS;

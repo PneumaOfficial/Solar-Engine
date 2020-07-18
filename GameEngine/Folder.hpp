@@ -7,13 +7,16 @@ namespace Solar {
 		struct EventBools {};
 		EventBools EventChecks;
 	public:
+		void Tick(float dt);
+		void Render(float dt, sf::RenderTexture* target);
 		Folder()
 		{
 			this->Type = "Folder";
 		};
-		void Tick(float dt);
-		void Render(float dt, sf::RenderTexture* target);
-
 		void HandleEvents();
 	};
+	auto CreateFolder()
+	{
+		return std::make_unique<Folder>();
+	}
 };

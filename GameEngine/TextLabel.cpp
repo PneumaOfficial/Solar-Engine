@@ -7,12 +7,6 @@ namespace Solar
 	void TextLabel::Tick(float dt)
 	{
 		//TODO: Parents
-		/*if (this->Parent != this->PreviousParent)
-		{
-			std::cout << "PARENT CHANGE!" << std::endl;
-			this->Parent->AddChild(this);
-			this->PreviousParent = this->Parent;
-		}*/
 		sf::Vector2f ParentSize = this->Parent->_body.getSize();
 		sf::Vector2f ParentPosition = this->Parent->_body.getPosition();
 		if (this->Text != this->Properties.Text)
@@ -84,23 +78,23 @@ namespace Solar
 			this->Properties.TextColor = this->TextColor;
 		}
 		
-		for (auto& x : this->children) {
-			x.second->Tick(dt);
+		for (std::size_t i = 0; i < this->children.size(); ++i) {
+			this->children[i]->Tick(dt);
 		}
 	}
 	void TextLabel::Render(float dt, sf::RenderTexture* target)
 	{	
 		if(this->_ValidFont)
 			target->draw(this->_text);
-		for (auto& x : this->children) {
-			x.second->Render(dt, target);
+		for (std::size_t i = 0; i < this->children.size(); ++i) {
+			this->children[i]->Render(dt, target);
 		}
 	}
 	void TextLabel::HandleEvents()
 	{
 
-		for (auto& x : this->children) {
-			x.second->HandleEvents();
+		for (std::size_t i = 0; i < this->children.size(); ++i) {
+			this->children[i]->HandleEvents();
 		}
 	}
 }
