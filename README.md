@@ -9,11 +9,11 @@ The direction of Solar Engine has change immensely. This iteration, even if it w
 This was my 3rd attempt at any kind of game engine at all. I've had a long time now to get my programming together.
 
 The new engine will support:
-  - Dynamic Multiplayer
+  - Dynamic Multiplayer  
     When joining other players, their map mods etc will all be replicated to players joining.
     This will allow easily joining your friends who may be using a special playthrough (This only replicates from the server, not vise versa)
 
-  - Luau
+  - Luau  
     Solar Engine was originally planned to have Lua, we are shifting to Luau.
     It's open sourced, which means not only can I modify the source if ever need be to tailor to the Solar Engine,
     I can reference its internals to understand whats going on on the low end.
@@ -23,11 +23,11 @@ The new engine will support:
     Its typedef features also allow for easily checking and enforcing types during the scripts compile time, rather than needing runtime checks.
     It has many features, but probably the biggest is its collection of LPS, debugging, and benchmarking tools. I'd rather not write these lol.
 
-  - Core Libraries
+  - Core Libraries  
     The source code for Solar Engine is split into libraries, then used back together to write the engine itself.
     This makes updating the engine much more streamlined for me, which leaves more time to make games with it!
     
-  - Task scheduling
+  - Task scheduling  
     In this iteration of the engine, I didn't do much well in regards towards event handling. Just another big hardwritten loop.
     As of writing this, I've already completed a much more advanced, expandable, and powerful task scheduling library.
     It took me 3-4 months of researching and planning, and 5 hours and 44 minutes to completely rewrite; not because of its size but rather its complexity.
